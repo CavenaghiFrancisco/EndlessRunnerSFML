@@ -1,11 +1,14 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
+using namespace sf;
+
 class Player {
 private:
 	int lives;
-	sf::RectangleShape collider;
+	RectangleShape collider;
 	bool isAlive;
+	Vector2f position;
 public:
 	Player(int lives, sf::RectangleShape collider, bool isAlive);
 	~Player();
