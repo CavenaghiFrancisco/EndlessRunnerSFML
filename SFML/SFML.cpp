@@ -1,9 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(600, 600), "SFML works!");
-    sf::CircleShape shape(300.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Endless Runner");
 
     while (window.isOpen())     {
         sf::Event event;
@@ -13,7 +11,6 @@ int main() {
         }
 
         window.clear();
-        window.draw(shape);
         window.display();
     }
 
