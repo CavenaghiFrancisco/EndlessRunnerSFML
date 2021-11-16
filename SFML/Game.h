@@ -3,6 +3,8 @@
 
 class Game {
 private:
+	RenderWindow* window;
+	Event* events;
 	bool gameInited;
 	bool goToMenu;
 	bool replay;

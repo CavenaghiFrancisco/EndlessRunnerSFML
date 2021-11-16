@@ -1,9 +1,11 @@
 #include "Menu.h"
 
-Menu::Menu() {
+Menu::Menu(RenderWindow* window) {
+	this->window = window;
 	menuInited = false;
 	goToGame = false;
 	goToCredits = false;
+	
 }
 
 Menu::~Menu() {

@@ -1,7 +1,9 @@
 #include "GameManager.h"
 #include <iostream>
 
-GameManager::GameManager() {
+GameManager::GameManager(RenderWindow* window, Event* events) {
+	this->window = window;
+	this->events = events;
 	isPlaying = true;
 }
 

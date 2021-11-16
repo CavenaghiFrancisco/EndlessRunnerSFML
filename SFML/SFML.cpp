@@ -1,18 +1,24 @@
-#include <SFML/Graphics.hpp>
+#include "GameManager.h"
+
+using namespace sf;
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(500, 800), "Endless Runner");
-
-    while (window.isOpen())     {
-        sf::Event event;
+    RenderWindow window(VideoMode(500, 800), "SFML works!");
+    Event event;
+    GameManager* GM = new GameManager();
+    while (window.isOpen()) {
+        
         while (window.pollEvent(event))         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == Event::Closed) {
                 window.close();
+            }
+            if (event.type == Event::KeyPressed) {
+                if(Keyboard::isKeyPressed(Keyboard::Escape)) window.close();
+            }
+            GM->StartGameManager();
         }
-
-        window.clear();
-        window.display();
+        
     }
-
+    delete GM;
     return 0;
 }

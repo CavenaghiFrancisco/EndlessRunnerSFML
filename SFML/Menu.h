@@ -1,7 +1,12 @@
 #pragma once
+#include "SFML/Graphics.hpp"
+
+using namespace sf;
 
 class Menu {
 private:
+	RenderWindow* window;
+	Event* events;
 	bool menuInited;
 	bool goToGame;
 	bool goToShop;
@@ -16,7 +21,7 @@ public:
 	float currentScreenHeight = 768;
 	float windowReSizeWidth = currentScreenWidth / screenWidth;
 	float windowReSizeHeight = currentScreenHeight / screenHeight;
-	Menu();
+	Menu(RenderWindow* window);
 	~Menu();
 	void Init();
 	void Input();
