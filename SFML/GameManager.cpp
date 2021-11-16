@@ -1,9 +1,7 @@
 #include "GameManager.h"
 #include <iostream>
 
-GameManager::GameManager(RenderWindow* window, Event* events) {
-	this->window = window;
-	this->events = events;
+GameManager::GameManager() {
 	isPlaying = true;
 }
 
@@ -30,15 +28,15 @@ bool GameManager::ChangeState(STATES states) {
 
 
 
-void GameManager::StartGameManager() {
-	UpdateState(GetState());
+void GameManager::StartGameManager(RenderWindow &window, Event& events) {
+	UpdateState(GetState(), window, events);
 }
 
 bool GameManager::QuitGame() {
 	return isPlaying;
 }
 
-void GameManager::UpdateState(STATES states) {
+void GameManager::UpdateState(STATES states, RenderWindow& window, Event& events) {
 	switch (GetState()) {
 	case STATES::MENU:
 		if (isThisStateStarting) {
@@ -46,11 +44,11 @@ void GameManager::UpdateState(STATES states) {
 			isThisStateStarting = false;
 		}
 		if (!(menu->GetInited())) {
-			menu->Init();
+			menu->Init(window);
 		}
-		menu->Input();
-		menu->Update();
-		menu->Draw();
+		menu->Input(window, events);
+		menu->Update(window);
+		menu->Draw(window);
 		if (menu->ExitMenuGoToGame()) {
 			currentState = STATES::GAME;
 			menu->DeInit();
@@ -70,9 +68,9 @@ void GameManager::UpdateState(STATES states) {
 			isThisStateStarting = false;
 		}
 		if (!(game->GetInited())) {
-			game->InitGame();
+			game->InitGame(window);
 		}
-		game->UpdateDrawFrame();
+		game->UpdateDrawFrame(window, events);
 		if (game->GoToMenu()) {
 			currentState = STATES::MENU;
 			game->DeInitGame();

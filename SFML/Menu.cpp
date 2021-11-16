@@ -1,31 +1,48 @@
 #include "Menu.h"
 
-Menu::Menu(RenderWindow* window) {
-	this->window = window;
+Menu::Menu() {
 	menuInited = false;
 	goToGame = false;
 	goToCredits = false;
-	
+	menuInited = false;
+	goToGame = false;
+	goToShop = false;
+	goToCredits = false;
+	goToOptions = false;
+	exitGame = false;
 }
 
 Menu::~Menu() {
 
 }
 
-void Menu::Init() {
+void Menu::Init(RenderWindow& window) {
 	menuInited = true;
+	shape.setRadius(100);
+	shape.setFillColor(Color::Red);
 }
 
-void Menu::Input() {
+void Menu::Input(RenderWindow& window, Event& events) {
+	while (window.pollEvent(events)){
+		if (events.type == Event::Closed) {
+			window.close();
+		}
+		if (events.type == Event::KeyPressed) {
+			if (Keyboard::isKeyPressed(Keyboard::G)) {
+				goToGame = true;
+			}
+		}
+	}
+}
+
+void Menu::Update(RenderWindow& window) {
 	
 }
 
-void Menu::Update() {
-	
-}
-
-void Menu::Draw() {
-	
+void Menu::Draw(RenderWindow& window) {
+	window.clear();
+	window.draw(shape);
+	window.display();
 }
 
 bool Menu::GetInited() {

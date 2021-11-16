@@ -6,21 +6,19 @@ enum class STATES { MENU, EXIT, GAME, SHOP };
 
 class GameManager {
 private:
-	RenderWindow* window;
-	Event* events;
 	STATES currentState = STATES::MENU;
 	bool isThisStateStarting = true;
 	bool isPlaying;
 	Menu* menu;
 	Game* game;
 public:
-	GameManager(RenderWindow* window, Event* events);
+	GameManager();
 	~GameManager();
 	STATES GetState();
 	void SetState(STATES& states);
-	void UpdateState(STATES states);
+	void UpdateState(STATES states, RenderWindow& window, Event& events);
 	bool ChangeState(STATES states);
-	void StartGameManager();
+	void StartGameManager(RenderWindow& window, Event &events);
 	bool QuitGame();
 };
 

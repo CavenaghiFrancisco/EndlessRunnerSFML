@@ -5,8 +5,6 @@ using namespace sf;
 
 class Menu {
 private:
-	RenderWindow* window;
-	Event* events;
 	bool menuInited;
 	bool goToGame;
 	bool goToShop;
@@ -14,6 +12,7 @@ private:
 	bool goToOptions;
 	bool exitGame;
 	int option;
+	CircleShape shape;
 public:
 	const float screenWidth = 1366;
 	const float screenHeight = 768;
@@ -21,12 +20,12 @@ public:
 	float currentScreenHeight = 768;
 	float windowReSizeWidth = currentScreenWidth / screenWidth;
 	float windowReSizeHeight = currentScreenHeight / screenHeight;
-	Menu(RenderWindow* window);
+	Menu();
 	~Menu();
-	void Init();
-	void Input();
-	void Update();
-	void Draw();
+	void Init(RenderWindow& window);
+	void Input(RenderWindow& window, Event& events);
+	void Update(RenderWindow& window);
+	void Draw(RenderWindow& window);
 	void DeInit();
 	bool GetInited();
 	bool ExitGame();
