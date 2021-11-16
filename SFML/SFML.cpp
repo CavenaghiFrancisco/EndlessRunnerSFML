@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Endless Runner");
+    sf::RenderWindow window(sf::VideoMode(500, 800), "Endless Runner");
 
     while (window.isOpen())     {
         sf::Event event;
