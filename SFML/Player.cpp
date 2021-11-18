@@ -1,5 +1,7 @@
 #include "Player.h"
 
+
+
 Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	this->lives = lives;
 	this->collider = collider;
@@ -23,4 +25,8 @@ bool Player::GetIsAlive() {
 
 void Player::SetIsAlive(bool isAlive) {
 	this->isAlive = isAlive;
+}
+
+RectangleShape Player::GetCollider() {
+	return collider;
 }

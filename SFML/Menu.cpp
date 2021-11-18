@@ -18,8 +18,15 @@ Menu::~Menu() {
 
 void Menu::Init(RenderWindow& window) {
 	menuInited = true;
-	shape.setRadius(100);
-	shape.setFillColor(Color::Red);
+	playButton.setSize({ (float)window.getSize().x / 2,100 });
+	creditsButton.setSize({ (float)window.getSize().x / 2,100 });
+	quitButton.setSize({ (float)window.getSize().x / 2,100 });
+	playButton.setPosition({ (float)window.getSize().x / 4,(float)window.getSize().y*3/6 });
+	creditsButton.setPosition({ (float)window.getSize().x / 4,(float)window.getSize().y * 4 / 6 });
+	quitButton.setPosition({ (float)window.getSize().x / 4,(float)window.getSize().y * 5 / 6 });
+	playButton.setFillColor(Color::Blue);
+	creditsButton.setFillColor(Color::Green);
+	quitButton.setFillColor(Color::Red);
 }
 
 void Menu::Input(RenderWindow& window, Event& events) {
@@ -41,7 +48,9 @@ void Menu::Update(RenderWindow& window) {
 
 void Menu::Draw(RenderWindow& window) {
 	window.clear();
-	window.draw(shape);
+	window.draw(playButton);
+	window.draw(creditsButton);
+	window.draw(quitButton);
 	window.display();
 }
 

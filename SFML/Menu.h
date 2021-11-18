@@ -12,7 +12,10 @@ private:
 	bool goToOptions;
 	bool exitGame;
 	int option;
-	CircleShape shape;
+	RectangleShape playButton;
+	RectangleShape creditsButton;
+	RectangleShape quitButton;
+	RectangleShape title;
 public:
 	const float screenWidth = 1366;
 	const float screenHeight = 768;

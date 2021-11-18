@@ -13,7 +13,7 @@ private:
 	bool gameOver;
 	float scrolling;
 	float timerPowerUp;
-	CircleShape shape;
+	RectangleShape shape;
 	int shapePosition = 1;
 	RectangleShape lava0;
 	RectangleShape lava1;

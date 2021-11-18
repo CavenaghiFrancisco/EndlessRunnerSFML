@@ -47,9 +47,9 @@ void Game::InitGame(RenderWindow& window) {
     path0.setFillColor(Color::Green);
     path1.setFillColor(Color::Green);
     path2.setFillColor(Color::Green);
-    shape.setRadius(window.getSize().x / 14);
+    shape.setSize({ (float)window.getSize().x / 8,(float)window.getSize().y / 10 });
     shape.setFillColor(Color::Blue);
-    shape.setPosition(path1.getPosition().x, shape.getPosition().y);
+    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y+ 120*6);
 }
 
 void Game::InputGame(RenderWindow& window, Event& events) {
@@ -61,38 +61,29 @@ void Game::InputGame(RenderWindow& window, Event& events) {
             if (Keyboard::isKeyPressed(Keyboard::M)) {
                 goToMenu = true;
             }
-        }
-        if (events.type == Event::KeyPressed) {
-            if (Keyboard::isKeyPressed(Keyboard::W)) {
+            else if (Keyboard::isKeyPressed(Keyboard::W)) {
                 shape.setPosition(shape.getPosition().x,shape.getPosition().y - 120);
             }
-        }
-        if (events.type == Event::KeyPressed) {
-            if (Keyboard::isKeyPressed(Keyboard::S)) {
+            else if (Keyboard::isKeyPressed(Keyboard::S)) {
                 shape.setPosition(shape.getPosition().x, shape.getPosition().y + 120);
             }
-        }
-        if (events.type == Event::KeyPressed) {
-            if (Keyboard::isKeyPressed(Keyboard::A)) {
+            else if (Keyboard::isKeyPressed(Keyboard::A)) {
                 if (shapePosition == 1) {
-                    shape.setPosition(path0.getPosition().x, shape.getPosition().y);
+                    shape.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y);
                     shapePosition = 0;
                 }
                 else if (shapePosition == 2) {
-                    shape.setPosition(path1.getPosition().x, shape.getPosition().y);
+                    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y);
                     shapePosition = 1;
-                }
-                
+                }  
             }
-        }
-        if (events.type == Event::KeyPressed) {
-            if (Keyboard::isKeyPressed(Keyboard::D)) {
+            else if (Keyboard::isKeyPressed(Keyboard::D)) {
                 if (shapePosition == 0) {
-                    shape.setPosition(path1.getPosition().x, shape.getPosition().y);
+                    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y);
                     shapePosition = 1;
                 }
                 else if (shapePosition == 1) {
-                    shape.setPosition(path2.getPosition().x, shape.getPosition().y);
+                    shape.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y);
                     shapePosition = 2;
                 }
             }
