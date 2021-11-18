@@ -6,6 +6,11 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	this->lives = lives;
 	this->collider = collider;
 	this->isAlive = isAlive;
+	this->position = 1;
+    this->texture.loadFromFile("OrpheoIdle.png");
+    this->sprite.setTexture(texture);
+    sprite.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });
+    sprite.setTextureRect({ 0,0,64,80 });
 }
 
 Player::~Player() {
@@ -29,4 +34,42 @@ void Player::SetIsAlive(bool isAlive) {
 
 RectangleShape Player::GetCollider() {
 	return collider;
+}
+
+void Player::MovePlayerUp() {
+    collider.setPosition(collider.getPosition().x, collider.getPosition().y - 120);
+    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
+}
+
+void Player::MovePlayerDown() {
+    collider.setPosition(collider.getPosition().x, collider.getPosition().y + 120);
+    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
+}
+
+void Player::MovePlayerLeft(RectangleShape path0, RectangleShape path1, RectangleShape path2) {
+    if (position == 1) {
+        collider.setPosition(path0.getPosition().x + 4.5, collider.getPosition().y);
+        position = 0;
+    }
+    else if (position == 2) {
+        collider.setPosition(path1.getPosition().x + 4.5, collider.getPosition().y);
+        position = 1;
+    }
+    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
+}
+
+void Player::MovePlayerRight(RectangleShape path0, RectangleShape path1, RectangleShape path2) {
+    if (position == 0) {
+        collider.setPosition(path1.getPosition().x + 4.5, collider.getPosition().y);
+        position = 1;
+    }
+    else if (position == 1) {
+        collider.setPosition(path2.getPosition().x + 4.5, collider.getPosition().y);
+        position = 2;
+    }
+    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
+}
+
+Sprite Player::GetSprite() {
+    return sprite;
 }

@@ -14,7 +14,6 @@ private:
 	float scrolling;
 	float timerPowerUp;
 	RectangleShape shape;
-	int shapePosition = 1;
 	RectangleShape lava0;
 	RectangleShape lava1;
 	RectangleShape lava2;
@@ -22,7 +21,7 @@ private:
 	RectangleShape path0;
 	RectangleShape path1;
 	RectangleShape path2;
-
+	Player* player;
 public:
 	const int screenWidth = 720;
 	const int screenHeight = 1280;

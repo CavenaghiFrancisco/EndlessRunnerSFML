@@ -4,7 +4,6 @@
 
 Game::Game() {
     gameInited = false;
-    shapePosition = 1;
 }
 
 Game::~Game() {
@@ -48,45 +47,36 @@ void Game::InitGame(RenderWindow& window) {
     path1.setFillColor(Color::Green);
     path2.setFillColor(Color::Green);
     shape.setSize({ (float)window.getSize().x / 8,(float)window.getSize().y / 10 });
-    shape.setFillColor(Color::Blue);
-    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y+ 120*6);
+    shape.setFillColor(Color::Transparent);
+    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y + 120 * 6);
+    player = new Player(3, shape, true);
 }
 
 void Game::InputGame(RenderWindow& window, Event& events) {
     while (window.pollEvent(events)) {
-        if (events.type == Event::Closed) {
+        switch (events.type) {
+        case Event::Closed:
             window.close();
-        }
-        if (events.type == Event::KeyPressed) {
+            break;
+        case Event::KeyPressed:
             if (Keyboard::isKeyPressed(Keyboard::M)) {
                 goToMenu = true;
             }
             else if (Keyboard::isKeyPressed(Keyboard::W)) {
-                shape.setPosition(shape.getPosition().x,shape.getPosition().y - 120);
+                player->MovePlayerUp();
             }
             else if (Keyboard::isKeyPressed(Keyboard::S)) {
-                shape.setPosition(shape.getPosition().x, shape.getPosition().y + 120);
-            }
-            else if (Keyboard::isKeyPressed(Keyboard::A)) {
-                if (shapePosition == 1) {
-                    shape.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y);
-                    shapePosition = 0;
-                }
-                else if (shapePosition == 2) {
-                    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y);
-                    shapePosition = 1;
-                }  
+                player->MovePlayerDown();
             }
             else if (Keyboard::isKeyPressed(Keyboard::D)) {
-                if (shapePosition == 0) {
-                    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y);
-                    shapePosition = 1;
-                }
-                else if (shapePosition == 1) {
-                    shape.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y);
-                    shapePosition = 2;
-                }
+                player->MovePlayerRight(path0, path1, path2);
             }
+            else if (Keyboard::isKeyPressed(Keyboard::A)) {
+                player->MovePlayerLeft(path0, path1, path2);
+            }
+            break;
+        default:
+            break;
         }
     }
 }
@@ -106,7 +96,8 @@ void Game::DrawGame(RenderWindow& window) {
     window.draw(path0);
     window.draw(path1);
     window.draw(path2);
-    window.draw(shape);
+    window.draw(player->GetCollider());
+    window.draw(player->GetSprite());
     window.display();
 }
 
