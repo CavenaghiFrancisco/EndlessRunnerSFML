@@ -3,6 +3,7 @@
 #include "Fire.h"
 #include <vector>
 
+//cambiar a gameplay
 class Game {
 private:
 	bool gameInited;
@@ -29,12 +30,12 @@ private:
 	RectangleShape fire2;
 	vector<Fire*> obstacles;
 public:
-	const int screenWidth = 720;
+	/*const int screenWidth = 720;
 	const int screenHeight = 1280;
 	float currentScreenWidth = 720;
 	float currentScreenHeight = 1280;
 	float windowReSizeWidth = currentScreenWidth / screenWidth;
-	float windowReSizeHeight = currentScreenHeight / screenHeight;
+	float windowReSizeHeight = currentScreenHeight / screenHeight;*/
 	Game();
 	~Game();
 	bool GetInited();

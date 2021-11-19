@@ -18,6 +18,7 @@ Menu::~Menu() {
 
 void Menu::Init(RenderWindow& window) {
 	menuInited = true;
+	//crear clase button
 	playButton.setSize({ (float)window.getSize().x / 2,100 });
 	creditsButton.setSize({ (float)window.getSize().x / 2,100 });
 	quitButton.setSize({ (float)window.getSize().x / 2,100 });

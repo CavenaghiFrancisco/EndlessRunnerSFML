@@ -17,12 +17,12 @@ private:
 	RectangleShape quitButton;
 	RectangleShape title;
 public:
-	const float screenWidth = 1366;
+	/*const float screenWidth = 1366;
 	const float screenHeight = 768;
 	float currentScreenWidth = 1366;
-	float currentScreenHeight = 768;
-	float windowReSizeWidth = currentScreenWidth / screenWidth;
-	float windowReSizeHeight = currentScreenHeight / screenHeight;
+	float currentScreenHeight = 768;*/
+	/*float windowReSizeWidth = currentScreenWidth / screenWidth;
+	float windowReSizeHeight = currentScreenHeight / screenHeight;*/
 	Menu();
 	~Menu();
 	void Init(RenderWindow& window);

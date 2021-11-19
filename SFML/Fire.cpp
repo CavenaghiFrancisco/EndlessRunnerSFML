@@ -1,6 +1,7 @@
 #include "Fire.h"
 
 Fire::Fire(RectangleShape collider) {
+	//sacar textura general
 	this->collider = collider;
 	this->texture.loadFromFile("SoulFire.png");
 	this->sprite.setTexture(texture);

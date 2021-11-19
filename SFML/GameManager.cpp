@@ -39,6 +39,7 @@ bool GameManager::QuitGame() {
 void GameManager::UpdateState(STATES states, RenderWindow& window, Event& events) {
 	switch (GetState()) {
 	case STATES::MENU:
+		//encapsular
 		if (isThisStateStarting) {
 			menu = new Menu();
 			isThisStateStarting = false;
