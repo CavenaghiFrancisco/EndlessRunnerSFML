@@ -38,12 +38,10 @@ RectangleShape Player::GetCollider() {
 
 void Player::MovePlayerUp() {
     collider.setPosition(collider.getPosition().x, collider.getPosition().y - 120);
-    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 }
 
 void Player::MovePlayerDown() {
     collider.setPosition(collider.getPosition().x, collider.getPosition().y + 120);
-    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 }
 
 void Player::MovePlayerLeft(RectangleShape path0, RectangleShape path1, RectangleShape path2) {
@@ -55,7 +53,6 @@ void Player::MovePlayerLeft(RectangleShape path0, RectangleShape path1, Rectangl
         collider.setPosition(path1.getPosition().x + 4.5, collider.getPosition().y);
         position = 1;
     }
-    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 }
 
 void Player::MovePlayerRight(RectangleShape path0, RectangleShape path1, RectangleShape path2) {
@@ -67,9 +64,12 @@ void Player::MovePlayerRight(RectangleShape path0, RectangleShape path1, Rectang
         collider.setPosition(path2.getPosition().x + 4.5, collider.getPosition().y);
         position = 2;
     }
-    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 }
 
 Sprite Player::GetSprite() {
     return sprite;
+}
+
+void Player::Update() {
+    sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 }

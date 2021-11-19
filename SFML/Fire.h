@@ -7,12 +7,16 @@ using namespace sf;
 
 class Fire {
 private:
-	Vector2f position;
 	RectangleShape collider;
+	bool isInTheMap;
+	Texture texture;
+	Sprite sprite;
 public:
-	Fire(Vector2f position,RectangleShape collider);
+	Fire(RectangleShape collider);
 	~Fire();
-	void SetPosition(Vector2f position);
-	Vector2f GetPosition();
+	RectangleShape GetCollider();
+	bool GetIsInTheMap();
+	void SetIsInTheMap(bool isInTheMap);
+	Sprite GetSprite();
 };
 

@@ -27,6 +27,7 @@ public:
 	void MovePlayerLeft(RectangleShape path0, RectangleShape path1, RectangleShape path2);
 	void MovePlayerRight(RectangleShape path0, RectangleShape path1, RectangleShape path2);
 	Sprite GetSprite();
+	void Update();
 	
 };
 

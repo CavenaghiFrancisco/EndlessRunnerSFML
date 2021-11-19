@@ -1,5 +1,7 @@
 #pragma once
 #include "Player.h"
+#include "Fire.h"
+#include <vector>
 
 class Game {
 private:
@@ -22,6 +24,10 @@ private:
 	RectangleShape path1;
 	RectangleShape path2;
 	Player* player;
+	RectangleShape fire0;
+	RectangleShape fire1;
+	RectangleShape fire2;
+	vector<Fire*> obstacles;
 public:
 	const int screenWidth = 720;
 	const int screenHeight = 1280;
