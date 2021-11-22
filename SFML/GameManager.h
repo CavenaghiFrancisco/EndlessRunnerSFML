@@ -1,6 +1,6 @@
 #pragma once
 #include "Menu.h"
-#include "Game.h"
+#include "Gameplay.h"
 
 enum class STATES { MENU, EXIT, GAME, SHOP };
 
@@ -10,7 +10,7 @@ private:
 	bool isThisStateStarting = true;
 	bool isPlaying;
 	Menu* menu;
-	Game* game;
+	Gameplay* gameplay;
 public:
 	GameManager();
 	~GameManager();
@@ -20,6 +20,8 @@ public:
 	bool ChangeState(STATES states);
 	void StartGameManager(RenderWindow& window, Event &events);
 	bool QuitGame();
+	void MenuState(RenderWindow& window, Event& events);
+	void GameState(RenderWindow& window, Event& events);
 };
 
 

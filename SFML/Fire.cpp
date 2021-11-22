@@ -1,9 +1,7 @@
 #include "Fire.h"
 
-Fire::Fire(RectangleShape collider) {
-	//sacar textura general
+Fire::Fire(RectangleShape collider, Texture &texture) {
 	this->collider = collider;
-	this->texture.loadFromFile("SoulFire.png");
 	this->sprite.setTexture(texture);
 	sprite.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });
 	sprite.setTextureRect({ 0,0,64,80 });
@@ -27,5 +25,6 @@ void Fire::SetIsInTheMap(bool isInTheMap) {
 Sprite Fire::GetSprite() {
 	return sprite;
 }
+
 
 

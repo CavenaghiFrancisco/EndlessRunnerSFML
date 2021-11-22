@@ -18,16 +18,9 @@ Menu::~Menu() {
 
 void Menu::Init(RenderWindow& window) {
 	menuInited = true;
-	//crear clase button
-	playButton.setSize({ (float)window.getSize().x / 2,100 });
-	creditsButton.setSize({ (float)window.getSize().x / 2,100 });
-	quitButton.setSize({ (float)window.getSize().x / 2,100 });
-	playButton.setPosition({ (float)window.getSize().x / 4,(float)window.getSize().y*3/6 });
-	creditsButton.setPosition({ (float)window.getSize().x / 4,(float)window.getSize().y * 4 / 6 });
-	quitButton.setPosition({ (float)window.getSize().x / 4,(float)window.getSize().y * 5 / 6 });
-	playButton.setFillColor(Color::Blue);
-	creditsButton.setFillColor(Color::Green);
-	quitButton.setFillColor(Color::Red);
+	playButton = new Button(t, (float)window.getSize().x / 4, window.getSize().y * 3 / 6, window.getSize().x / 2, 100);
+	creditsButton = new Button(t, (float)window.getSize().x / 4, (float)window.getSize().y * 4 / 6, (float)window.getSize().x / 2, 100);
+	quitButton = new Button(t, (float)window.getSize().x / 4, (float)window.getSize().y * 5 / 6, (float)window.getSize().x / 2, 100);
 }
 
 void Menu::Input(RenderWindow& window, Event& events) {
@@ -49,9 +42,9 @@ void Menu::Update(RenderWindow& window) {
 
 void Menu::Draw(RenderWindow& window) {
 	window.clear();
-	window.draw(playButton);
-	window.draw(creditsButton);
-	window.draw(quitButton);
+	playButton->Draw(window);
+	creditsButton->Draw(window);
+	quitButton->Draw(window);
 	window.display();
 }
 

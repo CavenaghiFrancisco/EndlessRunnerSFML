@@ -1,9 +1,6 @@
-#include "GameManager.h"
+#include "App.h"
 
-using namespace sf;
-
-int main() {
-    //reducir a una linea
+void Run() {
     RenderWindow window(VideoMode(500, 800), "SFML works!");
     Event events;
     GameManager* GM = new GameManager();
@@ -11,5 +8,4 @@ int main() {
         GM->StartGameManager(window, events);
     }
     delete GM;
-    return 0;
 }

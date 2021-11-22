@@ -1,7 +1,5 @@
 #include "Player.h"
 
-
-
 Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	this->lives = lives;
 	this->collider = collider;

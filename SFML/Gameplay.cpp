@@ -1,20 +1,20 @@
-#include "Game.h"
+#include "Gameplay.h"
 #include <cmath>
 
 
-Game::Game() {
+Gameplay::Gameplay() {
     gameInited = false;
 }
 
-Game::~Game() {
+Gameplay::~Gameplay() {
     delete player;
 }
 
-bool Game::GetInited() {
+bool Gameplay::GetInited() {
     return gameInited;
 }
 
-void Game::InitGame(RenderWindow& window) {
+void Gameplay::InitGame(RenderWindow& window) {
     gameInited = true;
     gameOver = false;
     goToMenu = false;
@@ -61,12 +61,14 @@ void Game::InitGame(RenderWindow& window) {
     fire2.setFillColor(Color::Transparent);
     fire2.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 3);
 
-    obstacles.push_back(new Fire(fire0));
-    obstacles.push_back(new Fire(fire1));
-    obstacles.push_back(new Fire(fire2));
+    fireTexture.loadFromFile("SoulFire.png");
+
+    obstacles.push_back(new Fire(fire0,fireTexture));
+    obstacles.push_back(new Fire(fire1, fireTexture));
+    obstacles.push_back(new Fire(fire2, fireTexture));
 }
 
-void Game::InputGame(RenderWindow& window, Event& events) {
+void Gameplay::InputGame(RenderWindow& window, Event& events) {
     while (window.pollEvent(events)) {
         switch (events.type) {
         case Event::Closed:
@@ -97,11 +99,11 @@ void Game::InputGame(RenderWindow& window, Event& events) {
 
 
 
-void Game::UpdateGame(RenderWindow& window) {
+void Gameplay::UpdateGame(RenderWindow& window) {
     player->Update();
 }
 
-void Game::DrawGame(RenderWindow& window) {
+void Gameplay::DrawGame(RenderWindow& window) {
     window.clear();
     window.draw(lava0);
     window.draw(lava1);
@@ -118,21 +120,21 @@ void Game::DrawGame(RenderWindow& window) {
     window.display();
 }
 
-void Game::DeInitGame() {
+void Gameplay::DeInitGame() {
     
 }
 
 
-void Game::UpdateDrawFrame(RenderWindow& window, Event& events) {
-    Game::InputGame(window, events);
-    Game::UpdateGame(window);
-    Game::DrawGame(window);
+void Gameplay::UpdateDrawFrame(RenderWindow& window, Event& events) {
+    Gameplay::InputGame(window, events);
+    Gameplay::UpdateGame(window);
+    Gameplay::DrawGame(window);
 }
 
-bool Game::GoToMenu() {
+bool Gameplay::GoToMenu() {
     return goToMenu;
 }
 
-bool Game::GoToGame() {
+bool Gameplay::GoToGame() {
     return goToGame;
 }

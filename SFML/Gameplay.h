@@ -3,8 +3,7 @@
 #include "Fire.h"
 #include <vector>
 
-//cambiar a gameplay
-class Game {
+class Gameplay {
 private:
 	bool gameInited;
 	bool goToMenu;
@@ -25,19 +24,14 @@ private:
 	RectangleShape path1;
 	RectangleShape path2;
 	Player* player;
+	Texture fireTexture;
 	RectangleShape fire0;
 	RectangleShape fire1;
 	RectangleShape fire2;
 	vector<Fire*> obstacles;
 public:
-	/*const int screenWidth = 720;
-	const int screenHeight = 1280;
-	float currentScreenWidth = 720;
-	float currentScreenHeight = 1280;
-	float windowReSizeWidth = currentScreenWidth / screenWidth;
-	float windowReSizeHeight = currentScreenHeight / screenHeight;*/
-	Game();
-	~Game();
+	Gameplay();
+	~Gameplay();
 	bool GetInited();
 	void InitGame(RenderWindow& window);         // Initialize game
 	void InputGame(RenderWindow& window, Event& events);

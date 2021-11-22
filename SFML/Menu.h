@@ -1,5 +1,5 @@
 #pragma once
-#include "SFML/Graphics.hpp"
+#include "Button.h"
 
 using namespace sf;
 
@@ -12,17 +12,11 @@ private:
 	bool goToOptions;
 	bool exitGame;
 	int option;
-	RectangleShape playButton;
-	RectangleShape creditsButton;
-	RectangleShape quitButton;
-	RectangleShape title;
+	Texture t;
+	Button* playButton;
+	Button* creditsButton;
+	Button* quitButton;
 public:
-	/*const float screenWidth = 1366;
-	const float screenHeight = 768;
-	float currentScreenWidth = 1366;
-	float currentScreenHeight = 768;*/
-	/*float windowReSizeWidth = currentScreenWidth / screenWidth;
-	float windowReSizeHeight = currentScreenHeight / screenHeight;*/
 	Menu();
 	~Menu();
 	void Init(RenderWindow& window);

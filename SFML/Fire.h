@@ -9,10 +9,9 @@ class Fire {
 private:
 	RectangleShape collider;
 	bool isInTheMap;
-	Texture texture;
 	Sprite sprite;
 public:
-	Fire(RectangleShape collider);
+	Fire(RectangleShape collider, Texture &texture);
 	~Fire();
 	RectangleShape GetCollider();
 	bool GetIsInTheMap();
