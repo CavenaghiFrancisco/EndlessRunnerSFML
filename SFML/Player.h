@@ -8,10 +8,13 @@ private:
 	int lives;
 	RectangleShape collider;
 	bool isAlive;
+	bool isShadow;
 	int positionX;
 	int positionY;
 	Texture texture;
+	Texture textureShadow;
 	Sprite sprite;
+	Sprite spriteShadow;
 public:
 	//Linea bugeada
 	Player(int lives, sf::RectangleShape collider, bool isAlive);
@@ -28,6 +31,9 @@ public:
 	void MovePlayerLeft(RectangleShape path0, RectangleShape path1, RectangleShape path2);
 	void MovePlayerRight(RectangleShape path0, RectangleShape path1, RectangleShape path2);
 	Sprite GetSprite();
+	bool GetIsShadow();
+	void SetIsShadow(bool isShadow);
+	void ShadowStep();
 	void Update();
 	
 };

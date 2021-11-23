@@ -90,6 +90,9 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
             else if (Keyboard::isKeyPressed(Keyboard::A)) {
                 player->MovePlayerLeft(path0, path1, path2);
             }
+            else if (Keyboard::isKeyPressed(Keyboard::Space)) {
+                player->ShadowStep();
+            }
             break;
         default:
             break;
