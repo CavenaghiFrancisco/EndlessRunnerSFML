@@ -8,7 +8,8 @@ private:
 	int lives;
 	RectangleShape collider;
 	bool isAlive;
-	int position;
+	int positionX;
+	int positionY;
 	Texture texture;
 	Sprite sprite;
 public:
