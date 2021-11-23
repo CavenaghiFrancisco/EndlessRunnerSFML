@@ -11,6 +11,7 @@ private:
 	bool isShadow;
 	int positionX;
 	int positionY;
+	int shadowTime;	
 	Texture texture;
 	Texture textureShadow;
 	Sprite sprite;

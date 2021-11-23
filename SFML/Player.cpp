@@ -1,5 +1,6 @@
 #include "Player.h"
 
+const int shadowTimeMax = 2000;
 
 Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	this->lives = lives;
@@ -8,6 +9,7 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	this->isShadow = false;
 	this->positionX = 1;
 	this->positionY = 6;
+	this->shadowTime = 0;
 	this->texture.loadFromFile("OrpheoIdle.png");
 	this->sprite.setTexture(texture);
 	this->textureShadow.loadFromFile("OrpheoShadow.png");
@@ -104,4 +106,13 @@ void Player::ShadowStep() {
 void Player::Update() {
 	sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 	spriteShadow.setPosition({ collider.getPosition().x, collider.getPosition().y });
+	if (isShadow)
+	{
+		shadowTime++;
+	}
+	if (shadowTime%shadowTimeMax==0)
+	{
+		SetIsShadow(false);
+		shadowTime = 0;
+	}
 }
