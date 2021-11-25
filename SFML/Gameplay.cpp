@@ -25,13 +25,13 @@ void Gameplay::InitGame(RenderWindow& window) {
     victory = false;
     pause = false;
     timerPowerUp = 0.0f;
-    lava0.setSize({ (float)window.getSize().x / 7,(float)window.getSize().y });
-    lava1.setSize({ (float)window.getSize().x / 7,(float)window.getSize().y });
-    lava2.setSize({ (float)window.getSize().x / 7,(float)window.getSize().y });
-    lava3.setSize({ (float)window.getSize().x / 7,(float)window.getSize().y });
-    path0.setSize({ (float)window.getSize().x / 7,(float)window.getSize().y });
-    path1.setSize({ (float)window.getSize().x / 7,(float)window.getSize().y });
-    path2.setSize({ (float)window.getSize().x / 7,(float)window.getSize().y });
+    lava0.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
+    lava1.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
+    lava2.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
+    lava3.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
+    path0.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
+    path1.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
+    path2.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
     lava0.setPosition({ 0,0 });
     path0.setPosition({ lava0.getSize().x,0 });
     lava1.setPosition({ lava0.getSize().x * 2,0 });
@@ -46,18 +46,18 @@ void Gameplay::InitGame(RenderWindow& window) {
     path0.setFillColor(Color::Green);
     path1.setFillColor(Color::Green);
     path2.setFillColor(Color::Green);
-    shape.setSize({ (float)window.getSize().x / 8,(float)window.getSize().y / 10 });
+    shape.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     shape.setFillColor(Color::Transparent);
     shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y + 120 * 6);
     player = new Player(3, shape, true);
 
-    fire0.setSize({ (float)window.getSize().x / 8,(float)window.getSize().y / 10 });
+    fire0.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire0.setFillColor(Color::Transparent);
     fire0.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 6);
-    fire1.setSize({ (float)window.getSize().x / 8,(float)window.getSize().y / 10 });
+    fire1.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire1.setFillColor(Color::Transparent);
     fire1.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y - 120 * 5);
-    fire2.setSize({ (float)window.getSize().x / 8,(float)window.getSize().y / 10 });
+    fire2.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire2.setFillColor(Color::Transparent);
     fire2.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 3);
 
