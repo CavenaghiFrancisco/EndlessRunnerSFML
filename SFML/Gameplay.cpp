@@ -63,9 +63,11 @@ void Gameplay::InitGame(RenderWindow& window) {
 
     fireTexture.loadFromFile("SoulFire.png");
 
-    obstacles.push_back(new Fire(fire0,fireTexture));
-    obstacles.push_back(new Fire(fire1, fireTexture));
-    obstacles.push_back(new Fire(fire2, fireTexture));
+    objects.push_back(new Fire(fire0,fireTexture));
+    objects.push_back(new Fire(fire1, fireTexture));
+    objects.push_back(new Fire(fire2, fireTexture));
+    objects[2]->SetPositionX(0);
+    objects[2]->SetPositionY(3);
 }
 
 void Gameplay::InputGame(RenderWindow& window, Event& events) {
@@ -104,6 +106,12 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
 
 void Gameplay::UpdateGame(RenderWindow& window) {
     player->Update();
+    for (int i = 0; i < objects.size(); i++) {
+        objects[i]->InCollision(player);
+    }
+    if (!player->GetIsAlive()) {
+        goToMenu = true;
+    }
 }
 
 void Gameplay::DrawGame(RenderWindow& window) {
@@ -117,8 +125,8 @@ void Gameplay::DrawGame(RenderWindow& window) {
     window.draw(path2);
     window.draw(player->GetCollider());
     window.draw(player->GetSprite());
-    for (int i = 0; i < obstacles.size(); i++) {
-        window.draw(obstacles[i]->GetSprite());
+    for (int i = 0; i < objects.size(); i++) {
+        window.draw(objects[i]->GetSprite());
     }
     window.display();
 }

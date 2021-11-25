@@ -28,7 +28,7 @@ private:
 	RectangleShape fire0;
 	RectangleShape fire1;
 	RectangleShape fire2;
-	vector<Fire*> obstacles;
+	vector<Object*> objects;
 public:
 	Gameplay();
 	~Gameplay();

@@ -116,3 +116,11 @@ void Player::Update() {
 		shadowTime = 0;
 	}
 }
+
+int Player::GetPositionX() {
+	return positionX;
+}
+
+int Player::GetPositionY() {
+	return positionY;
+}

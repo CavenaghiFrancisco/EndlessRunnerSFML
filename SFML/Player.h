@@ -36,6 +36,8 @@ public:
 	void SetIsShadow(bool isShadow);
 	void ShadowStep();
 	void Update();
+	int GetPositionX();
+	int GetPositionY();
 	
 };
 
