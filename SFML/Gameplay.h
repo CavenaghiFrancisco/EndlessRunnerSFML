@@ -13,6 +13,7 @@ private:
 	bool victory;
 	bool pause;
 	bool gameOver;
+	int second;
 	float scrolling;
 	float timerPowerUp;
 	RectangleShape shape;
@@ -29,6 +30,7 @@ private:
 	RectangleShape fire1;
 	RectangleShape fire2;
 	vector<Object*> objects;
+	Clock clock;
 public:
 	Gameplay();
 	~Gameplay();

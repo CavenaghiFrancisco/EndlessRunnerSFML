@@ -21,9 +21,18 @@ Sprite Object::GetSprite() {
 }
 
 void Object::Movement() {
+	collider.setPosition(collider.getPosition().x, collider.getPosition().y + 120);
+	positionY++;
+	sprite.setPosition({ collider.getPosition().x,collider.getPosition().y });
 }
 
 void Object::SetRandomPosition() {
+	if (positionY >= 7) {
+		positionX = rand() % 3 + 1;
+		positionY = 0;
+		collider.setPosition(collider.getPosition().x, 0);
+		sprite.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });
+	}
 }
 
 int Object::GetPositionX() {

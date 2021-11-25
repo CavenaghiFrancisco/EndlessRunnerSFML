@@ -24,6 +24,7 @@ void Gameplay::InitGame(RenderWindow& window) {
     gameOver = false;
     victory = false;
     pause = false;
+    second = 0;
     timerPowerUp = 0.0f;
     lava0.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
     lava1.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
@@ -108,9 +109,16 @@ void Gameplay::UpdateGame(RenderWindow& window) {
     player->Update();
     for (int i = 0; i < objects.size(); i++) {
         objects[i]->InCollision(player);
+        objects[i]->SetRandomPosition();
     }
     if (!player->GetIsAlive()) {
         goToMenu = true;
+    }
+    if ((int)(clock.getElapsedTime().asSeconds()) % 2 == 0 && (int)(clock.getElapsedTime().asSeconds()) != 0 && second != (int)clock.getElapsedTime().asSeconds()) {
+        for (int i = 0; i < objects.size(); i++) {
+            objects[i]->Movement();
+        }
+        second = clock.getElapsedTime().asSeconds();
     }
 }
 
