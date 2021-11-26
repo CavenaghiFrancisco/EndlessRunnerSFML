@@ -28,7 +28,7 @@ void Object::Movement() {
 
 void Object::SetRandomPosition() {
 	if (positionY >= 7) {
-		positionX = rand() % 3 + 1;
+		/*positionX = rand() % 3 + 1;*/
 		positionY = 0;
 		collider.setPosition(collider.getPosition().x, 0);
 		sprite.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });

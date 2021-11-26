@@ -3,6 +3,7 @@
 
 using namespace sf;
 
+//hacerlo derivada de object
 class Player {
 private:
 	int lives;
