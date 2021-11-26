@@ -69,6 +69,10 @@ void Gameplay::InitGame(RenderWindow& window) {
     objects.push_back(new Fire(fire2, fireTexture));
     objects[2]->SetPositionX(0);
     objects[2]->SetPositionY(3);
+    objects[1]->SetPositionX(1);
+    objects[1]->SetPositionY(1);
+    objects[0]->SetPositionX(2);
+    objects[0]->SetPositionY(0);
 }
 
 void Gameplay::InputGame(RenderWindow& window, Event& events) {
@@ -114,7 +118,7 @@ void Gameplay::UpdateGame(RenderWindow& window) {
     if (!player->GetIsAlive()) {
         goToMenu = true;
     }
-    if ((int)(clock.getElapsedTime().asSeconds()) % 2 == 0 && (int)(clock.getElapsedTime().asSeconds()) != 0 && second != (int)clock.getElapsedTime().asSeconds()) {
+    if ((int)(clock.getElapsedTime().asSeconds()) % 1 == 0 && (int)(clock.getElapsedTime().asSeconds()) != 0 && second != (int)clock.getElapsedTime().asSeconds()) {
         for (int i = 0; i < objects.size(); i++) {
             objects[i]->Movement();
         }
