@@ -1,6 +1,6 @@
 #include "Fire.h"
 
-Fire::Fire(RectangleShape collider, Texture &texture) : Object(collider, texture) {
+Fire::Fire(RectangleShape collider, Texture &texture, int id) : Object(collider, texture, id) {
 }
 
 Fire::~Fire() {

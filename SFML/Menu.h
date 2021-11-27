@@ -12,7 +12,8 @@ private:
 	bool goToOptions;
 	bool exitGame;
 	int option;
-	Texture t;
+	Texture menuTexture;
+	Sprite menuSprite;
 	Button* playButton;
 	Button* creditsButton;
 	Button* quitButton;
@@ -27,9 +28,7 @@ public:
 	bool GetInited();
 	bool ExitGame();
 	bool ExitMenuGoToCredits();
-	bool ExitMenuGoToOptions();
 	bool ExitMenuGoToGame();
-	bool ExitMenuGoToShop();
 };
 
 

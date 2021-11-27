@@ -6,7 +6,7 @@ using namespace sf;
 
 class Fire : public Object {
 public:
-	Fire(RectangleShape collider, Texture &texture);
+	Fire(RectangleShape collider, Texture &texture, int id);
 	~Fire();
 	void InCollision(Player* player);
 };

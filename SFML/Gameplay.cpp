@@ -73,12 +73,22 @@ void Gameplay::InitGame(RenderWindow& window) {
     fire6.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire6.setFillColor(Color::Transparent);
     fire6.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 13);
+    coin0.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    coin0.setFillColor(Color::Transparent);
+    coin0.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 8);
+    coin1.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    coin1.setFillColor(Color::Transparent);
+    coin1.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 10);
+    coin2.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    coin2.setFillColor(Color::Transparent);
+    coin2.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 12);
 
     lava.loadFromFile("Lava.png");
     lava.setRepeated(true);
     path.loadFromFile("Stone.png");
     path.setRepeated(true);
     fireTexture.loadFromFile("SoulFire.png");
+    coinTexture.loadFromFile("Coin.png");
 
     spritePath0.setTexture(path);
     spritePath0.setTextureRect({ (int)150,(int)0,(int)path0.getSize().x+5,(int)path0.getSize().y });
@@ -102,13 +112,16 @@ void Gameplay::InitGame(RenderWindow& window) {
     spriteLava3.setTextureRect({ (int)lava3.getPosition().x,(int)0,(int)lava3.getSize().x,(int)lava3.getSize().y });
     spriteLava3.setPosition(lava3.getPosition().x, 0);
 
-    objects.push_back(new Fire(fire0,fireTexture));
-    objects.push_back(new Fire(fire1, fireTexture));
-    objects.push_back(new Fire(fire2, fireTexture));
-    objects.push_back(new Fire(fire3, fireTexture));
-    objects.push_back(new Fire(fire4, fireTexture));
-    objects.push_back(new Fire(fire5, fireTexture));
-    objects.push_back(new Fire(fire6, fireTexture));
+    objects.push_back(new Fire(fire0,fireTexture,0));
+    objects.push_back(new Fire(fire1, fireTexture,1));
+    objects.push_back(new Fire(fire2, fireTexture, 2));
+    objects.push_back(new Fire(fire3, fireTexture, 3));
+    objects.push_back(new Fire(fire4, fireTexture, 4));
+    objects.push_back(new Fire(fire5, fireTexture, 5));
+    objects.push_back(new Fire(fire6, fireTexture, 6));
+    objects.push_back(new Coin(coin0, coinTexture, 7));
+    objects.push_back(new Coin(coin1, coinTexture, 8));
+    objects.push_back(new Coin(coin2, coinTexture, 9));
     objects[0]->SetPositionY(-1);
     objects[1]->SetPositionY(-2);
     objects[2]->SetPositionY(-3);
@@ -116,6 +129,9 @@ void Gameplay::InitGame(RenderWindow& window) {
     objects[4]->SetPositionY(-5);
     objects[5]->SetPositionY(-6);
     objects[6]->SetPositionY(-7);
+    objects[7]->SetPositionY(-2);
+    objects[8]->SetPositionY(-4);
+    objects[9]->SetPositionY(-6);
 
 }
 
@@ -156,9 +172,13 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
 void Gameplay::UpdateGame(RenderWindow& window) {
     player->Update();
     for (int i = 0; i < objects.size(); i++) {
+        Coin* coin = dynamic_cast<Coin*>(objects[i]);
+        if (coin) {
+            coin->JustSpawned();
+        }
         objects[i]->InCollision(player);
         objects[i]->SetRandomPosition();
-        objects[i]->UpdatePath(path0,path1,path2);
+        objects[i]->UpdatePath(path0,path1,path2, objects);
     }
     if (!player->GetIsAlive()) {
         goToMenu = true;
@@ -190,7 +210,16 @@ void Gameplay::DrawGame(RenderWindow& window) {
     window.draw(player->GetCollider());
     window.draw(player->GetSprite());
     for (int i = 0; i < objects.size(); i++) {
-        window.draw(objects[i]->GetSprite());
+        Coin* coin = dynamic_cast<Coin*>(objects[i]);
+        if (coin) {
+            if (!coin->GetIsCollected()) {
+                window.draw(coin->GetSprite());
+            }   
+        }
+        else {
+            window.draw(objects[i]->GetSprite());
+        }
+        
     }
     window.display();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "Fire.h"
+#include "Coin.h"
 #include <vector>
 
 class Gameplay {
@@ -43,6 +44,9 @@ private:
 	RectangleShape fire4;
 	RectangleShape fire5;
 	RectangleShape fire6;
+	RectangleShape coin0;
+	RectangleShape coin1;
+	RectangleShape coin2;
 	vector<Object*> objects;
 	Clock clock;
 public:

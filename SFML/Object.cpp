@@ -1,8 +1,10 @@
 #include "Object.h"
 
-Object::Object(RectangleShape collider, Texture &texture) {
+
+Object::Object(RectangleShape collider, Texture &texture, int id) {
 	this->collider = collider;
 	this->sprite.setTexture(texture);
+	this->id = id;
 	positionX = rand() % 3;
 	positionY = 0;
 	sprite.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });
@@ -26,7 +28,14 @@ void Object::Movement() {
 	sprite.setPosition({ collider.getPosition().x,collider.getPosition().y });
 }
 
-void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleShape path2) {
+void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleShape path2, vector<Object*> objects) {
+	for (int i = 0; i < objects.size(); i++) {
+		if (objects[i]->positionY == positionY && id != objects[i]->id) {
+			while (positionX == objects[i]->positionX) {
+				this->positionX = rand() % 3;
+			}
+		}
+	}
 	switch (positionX) {
 	case 0:
 		collider.setPosition(path0.getPosition().x + 4.5, collider.getPosition().y);
@@ -47,7 +56,7 @@ void Object::SetRandomPosition() {
 		positionY = 0;
 		positionX = rand() % 3;
 		collider.setPosition(collider.getPosition().x, 0);
-		sprite.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });
+		sprite.setPosition({ collider.getPosition().x,collider.getPosition().y });
 	}
 }
 
