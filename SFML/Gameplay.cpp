@@ -61,15 +61,35 @@ void Gameplay::InitGame(RenderWindow& window) {
     fire2.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire2.setFillColor(Color::Transparent);
     fire2.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 9);
+    fire3.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    fire3.setFillColor(Color::Transparent);
+    fire3.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 10);
+    fire4.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    fire4.setFillColor(Color::Transparent);
+    fire4.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y - 120 * 11);
+    fire5.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    fire5.setFillColor(Color::Transparent);
+    fire5.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 12);
+    fire6.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    fire6.setFillColor(Color::Transparent);
+    fire6.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 13);
 
     fireTexture.loadFromFile("SoulFire.png");
 
     objects.push_back(new Fire(fire0,fireTexture));
     objects.push_back(new Fire(fire1, fireTexture));
     objects.push_back(new Fire(fire2, fireTexture));
+    objects.push_back(new Fire(fire3, fireTexture));
+    objects.push_back(new Fire(fire4, fireTexture));
+    objects.push_back(new Fire(fire5, fireTexture));
+    objects.push_back(new Fire(fire6, fireTexture));
     objects[0]->SetPositionY(-1);
     objects[1]->SetPositionY(-2);
     objects[2]->SetPositionY(-3);
+    objects[3]->SetPositionY(-4);
+    objects[4]->SetPositionY(-5);
+    objects[5]->SetPositionY(-6);
+    objects[6]->SetPositionY(-7);
 
 }
 

@@ -10,6 +10,7 @@ private:
 	RectangleShape collider;
 	bool isAlive;
 	bool isShadow;
+	int points;
 	int positionX;
 	int positionY;
 	int shadowTime;	
@@ -41,6 +42,8 @@ public:
 	void Update();
 	int GetPositionX();
 	int GetPositionY();
+	int GetPoints();
+	void SetPoints(int points);
 	
 };
 

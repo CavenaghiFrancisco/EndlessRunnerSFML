@@ -26,9 +26,14 @@ private:
 	RectangleShape path2;
 	Player* player;
 	Texture fireTexture;
+	Texture coinTexture;
 	RectangleShape fire0;
 	RectangleShape fire1;
 	RectangleShape fire2;
+	RectangleShape fire3;
+	RectangleShape fire4;
+	RectangleShape fire5;
+	RectangleShape fire6;
 	vector<Object*> objects;
 	Clock clock;
 public:

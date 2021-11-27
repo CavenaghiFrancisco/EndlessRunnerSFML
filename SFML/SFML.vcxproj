@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="App.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Fire.cpp" />
     <ClCompile Include="Gameplay.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Coin.h" />
     <ClInclude Include="Fire.h" />
     <ClInclude Include="Gameplay.h" />
     <ClInclude Include="GameManager.h" />
