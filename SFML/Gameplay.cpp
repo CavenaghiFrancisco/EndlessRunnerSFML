@@ -74,7 +74,33 @@ void Gameplay::InitGame(RenderWindow& window) {
     fire6.setFillColor(Color::Transparent);
     fire6.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 13);
 
+    lava.loadFromFile("Lava.png");
+    lava.setRepeated(true);
+    path.loadFromFile("Stone.png");
+    path.setRepeated(true);
     fireTexture.loadFromFile("SoulFire.png");
+
+    spritePath0.setTexture(path);
+    spritePath0.setTextureRect({ (int)150,(int)0,(int)path0.getSize().x+5,(int)path0.getSize().y });
+    spritePath0.setPosition(path0.getPosition().x,0);
+    spritePath1.setTexture(path);
+    spritePath1.setTextureRect({ (int)150,(int)0,(int)path1.getSize().x+5,(int)path1.getSize().y });
+    spritePath1.setPosition(path1.getPosition().x, 0);
+    spritePath2.setTexture(path);
+    spritePath2.setTextureRect({ (int)150,(int)0,(int)path2.getSize().x+5,(int)path2.getSize().y });
+    spritePath2.setPosition(path2.getPosition().x, 0);
+    spriteLava0.setTexture(lava);
+    spriteLava0.setTextureRect({(int)0,(int)0,(int)lava0.getSize().x,(int)lava0.getSize().y});
+    spriteLava0.setPosition(lava0.getPosition().x, 0);
+    spriteLava1.setTexture(lava);
+    spriteLava1.setTextureRect({ (int)lava1.getPosition().x,(int)0,(int)lava1.getSize().x,(int)lava1.getSize().y });
+    spriteLava1.setPosition(lava1.getPosition().x, 0);
+    spriteLava2.setTexture(lava);
+    spriteLava2.setTextureRect({ (int)lava2.getPosition().x,(int)0,(int)lava2.getSize().x,(int)lava2.getSize().y });
+    spriteLava2.setPosition(lava2.getPosition().x, 0);
+    spriteLava3.setTexture(lava);
+    spriteLava3.setTextureRect({ (int)lava3.getPosition().x,(int)0,(int)lava3.getSize().x,(int)lava3.getSize().y });
+    spriteLava3.setPosition(lava3.getPosition().x, 0);
 
     objects.push_back(new Fire(fire0,fireTexture));
     objects.push_back(new Fire(fire1, fireTexture));
@@ -148,12 +174,19 @@ void Gameplay::UpdateGame(RenderWindow& window) {
 void Gameplay::DrawGame(RenderWindow& window) {
     window.clear();
     window.draw(lava0);
+    window.draw(spriteLava0);
     window.draw(lava1);
+    window.draw(spriteLava1);
     window.draw(lava2);
+    window.draw(spriteLava2);
     window.draw(lava3);
+    window.draw(spriteLava3);
     window.draw(path0);
+    window.draw(spritePath0);
     window.draw(path1);
+    window.draw(spritePath1);
     window.draw(path2);
+    window.draw(spritePath2);
     window.draw(player->GetCollider());
     window.draw(player->GetSprite());
     for (int i = 0; i < objects.size(); i++) {
