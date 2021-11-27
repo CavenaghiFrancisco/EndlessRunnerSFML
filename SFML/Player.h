@@ -17,6 +17,8 @@ private:
 	Texture textureShadow;
 	Sprite sprite;
 	Sprite spriteShadow;
+	Clock shadowClock;
+	bool firstShadowStep;
 public:
 	//Linea bugeada
 	Player(int lives, sf::RectangleShape collider, bool isAlive);

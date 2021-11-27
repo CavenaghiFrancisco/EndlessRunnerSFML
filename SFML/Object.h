@@ -13,6 +13,7 @@ public:
 	RectangleShape GetCollider();
 	Sprite GetSprite();
 	void Movement();
+	void UpdatePath(RectangleShape path0, RectangleShape path1, RectangleShape path2);
 	void SetRandomPosition();
 	int GetPositionX();
 	void SetPositionX(int positionX);

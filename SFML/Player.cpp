@@ -18,6 +18,7 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	spriteShadow.setTextureRect({ 0,0,64,80 });
 	sprite.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });
 	sprite.setTextureRect({ 0,0,64,80 });
+	firstShadowStep = true;
 }
 
 Player::~Player() {
@@ -100,20 +101,23 @@ void Player::SetIsShadow(bool isShadow) {
 }
 
 void Player::ShadowStep() {
-	SetIsShadow(!isShadow);
+	if (firstShadowStep) {
+		SetIsShadow(!isShadow);
+		shadowClock.restart();
+		firstShadowStep = false;
+	}
+	else if(shadowClock.getElapsedTime().asSeconds() > 8) {
+		SetIsShadow(!isShadow);
+		shadowClock.restart();
+	}
+	
 }
 
 void Player::Update() {
 	sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 	spriteShadow.setPosition({ collider.getPosition().x, collider.getPosition().y });
-	if (isShadow)
-	{
-		shadowTime++;
-	}
-	if (shadowTime%shadowTimeMax==0)
-	{
-		SetIsShadow(false);
-		shadowTime = 0;
+	if (isShadow && shadowClock.getElapsedTime().asSeconds() > 3) {
+		SetIsShadow(!isShadow);
 	}
 }
 

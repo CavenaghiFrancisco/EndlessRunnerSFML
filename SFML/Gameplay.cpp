@@ -54,25 +54,23 @@ void Gameplay::InitGame(RenderWindow& window) {
 
     fire0.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire0.setFillColor(Color::Transparent);
-    fire0.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 6);
+    fire0.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 7);
     fire1.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire1.setFillColor(Color::Transparent);
-    fire1.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y - 120 * 5);
+    fire1.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y - 120 * 8);
     fire2.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire2.setFillColor(Color::Transparent);
-    fire2.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 3);
+    fire2.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 9);
 
     fireTexture.loadFromFile("SoulFire.png");
 
     objects.push_back(new Fire(fire0,fireTexture));
     objects.push_back(new Fire(fire1, fireTexture));
     objects.push_back(new Fire(fire2, fireTexture));
-    objects[2]->SetPositionX(0);
-    objects[2]->SetPositionY(3);
-    objects[1]->SetPositionX(1);
-    objects[1]->SetPositionY(1);
-    objects[0]->SetPositionX(2);
-    objects[0]->SetPositionY(0);
+    objects[0]->SetPositionY(-1);
+    objects[1]->SetPositionY(-2);
+    objects[2]->SetPositionY(-3);
+
 }
 
 void Gameplay::InputGame(RenderWindow& window, Event& events) {
@@ -114,6 +112,7 @@ void Gameplay::UpdateGame(RenderWindow& window) {
     for (int i = 0; i < objects.size(); i++) {
         objects[i]->InCollision(player);
         objects[i]->SetRandomPosition();
+        objects[i]->UpdatePath(path0,path1,path2);
     }
     if (!player->GetIsAlive()) {
         goToMenu = true;
