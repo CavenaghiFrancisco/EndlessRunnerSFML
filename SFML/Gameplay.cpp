@@ -148,10 +148,7 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
             window.close();
             break;
         case Event::KeyPressed:
-            if (Keyboard::isKeyPressed(Keyboard::M)) {
-                goToMenu = true;
-            }
-            else if (Keyboard::isKeyPressed(Keyboard::W)) {
+            if (Keyboard::isKeyPressed(Keyboard::W)) {
                 player->MovePlayerUp();
             }
             else if (Keyboard::isKeyPressed(Keyboard::S)) {

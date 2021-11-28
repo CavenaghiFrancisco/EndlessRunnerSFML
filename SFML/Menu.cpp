@@ -30,11 +30,6 @@ void Menu::Input(RenderWindow& window, Event& events) {
 		if (events.type == Event::Closed) {
 			window.close();
 		}
-		if (events.type == Event::KeyPressed) {
-			if (Keyboard::isKeyPressed(Keyboard::G)) {
-				goToGame = true;
-			}
-		}
 		if (events.type == Event::MouseButtonPressed) {
 			if (mouse.isButtonPressed(Mouse::Button::Left)) {
 				if (!goToCredits) {
