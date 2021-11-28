@@ -3,21 +3,17 @@
 #include "Fire.h"
 #include "Coin.h"
 #include "Wine.h"
+#include "Button.h"
 #include <vector>
 
 class Gameplay {
 private:
 	bool gameInited;
 	bool goToMenu;
-	bool replay;
 	bool isPaused;
 	bool goToGame;
-	bool victory;
-	bool pause;
 	bool gameOver;
 	int second;
-	float scrolling;
-	float timerPowerUp;
 	RectangleShape shape;
 	Texture lava;
 	Sprite spriteLava0;
@@ -50,8 +46,17 @@ private:
 	RectangleShape coin1;
 	RectangleShape coin2;
 	RectangleShape wine;
+	Texture unpausedTexture;
+	Texture unpausedGreyTexture;
+	Texture pausedTexture;
+	Texture pausedGreyTexture;
+	Texture restartTexture;
+	Texture restartGreyTexture;
+	Sprite halfScreen;
 	vector<Object*> objects;
 	Clock clock;
+	Button* resumeButton;
+	Button* menuButton;
 public:
 	Gameplay();
 	~Gameplay();

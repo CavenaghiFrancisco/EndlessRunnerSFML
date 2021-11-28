@@ -18,14 +18,10 @@ void Gameplay::InitGame(RenderWindow& window) {
     gameInited = true;
     gameOver = false;
     goToMenu = false;
-    replay = false;
     isPaused = false;
     goToGame = false;
     gameOver = false;
-    victory = false;
-    pause = false;
     second = 0;
-    timerPowerUp = 0.0f;
     lava0.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
     lava1.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
     lava2.setSize({ (float)window.getSize().x / 14,(float)window.getSize().y });
@@ -93,6 +89,14 @@ void Gameplay::InitGame(RenderWindow& window) {
     fireTexture.loadFromFile("SoulFire.png");
     coinTexture.loadFromFile("Coin.png");
     wineTexture.loadFromFile("Wine.png");
+    unpausedTexture.loadFromFile("Unpaused.png");
+    unpausedGreyTexture.loadFromFile("UnpausedGrey.png");
+    pausedTexture.loadFromFile("Paused.png");
+    pausedGreyTexture.loadFromFile("PausedGrey.png");
+    restartTexture.loadFromFile("Restart.png");
+    restartGreyTexture.loadFromFile("RestartGrey.png");
+    halfScreen.setTexture(unpausedTexture);
+    halfScreen.setPosition(window.getSize().x / 2, 0);
 
     spritePath0.setTexture(path);
     spritePath0.setTextureRect({ (int)150,(int)0,(int)path0.getSize().x+5,(int)path0.getSize().y });
@@ -139,6 +143,9 @@ void Gameplay::InitGame(RenderWindow& window) {
     objects[9]->SetPositionY(-6);
     objects[10]->SetPositionY(-5);
 
+    menuButton = new Button((float)window.getSize().x-310, (float)window.getSize().y - 150, 120, 60);
+    resumeButton = new Button((float)window.getSize().x - 320, (float)window.getSize().y - 230, 130, 60);
+
 }
 
 void Gameplay::InputGame(RenderWindow& window, Event& events) {
@@ -148,20 +155,35 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
             window.close();
             break;
         case Event::KeyPressed:
-            if (Keyboard::isKeyPressed(Keyboard::W)) {
-                player->MovePlayerUp();
+            if (!isPaused) {
+                if (Keyboard::isKeyPressed(Keyboard::W)) {
+                    player->MovePlayerUp();
+                }
+                else if (Keyboard::isKeyPressed(Keyboard::S)) {
+                    player->MovePlayerDown();
+                }
+                else if (Keyboard::isKeyPressed(Keyboard::D)) {
+                    player->MovePlayerRight(path0, path1, path2);
+                }
+                else if (Keyboard::isKeyPressed(Keyboard::A)) {
+                    player->MovePlayerLeft(path0, path1, path2);
+                }
+                else if (Keyboard::isKeyPressed(Keyboard::Space)) {
+                    player->ShadowStep();
+                }
             }
-            else if (Keyboard::isKeyPressed(Keyboard::S)) {
-                player->MovePlayerDown();
+            break;
+        case Event::MouseButtonPressed:
+            if (menuButton->IsClicked(window)) {
+                goToMenu = true;
             }
-            else if (Keyboard::isKeyPressed(Keyboard::D)) {
-                player->MovePlayerRight(path0, path1, path2);
-            }
-            else if (Keyboard::isKeyPressed(Keyboard::A)) {
-                player->MovePlayerLeft(path0, path1, path2);
-            }
-            else if (Keyboard::isKeyPressed(Keyboard::Space)) {
-                player->ShadowStep();
+            else if (resumeButton->IsClicked(window)) {
+                if (!gameOver) {
+                    isPaused = !isPaused;
+                }
+                else {
+                    goToGame = true;
+                }
             }
             break;
         default:
@@ -173,28 +195,53 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
 
 
 void Gameplay::UpdateGame(RenderWindow& window) {
-    player->Update();
-    for (int i = 0; i < objects.size(); i++) {
-        Wine* winee = dynamic_cast<Wine*>(objects[i]);
-        Coin* coin = dynamic_cast<Coin*>(objects[i]);
-        if (coin) {
-            coin->JustSpawned();
+    if(!isPaused && !gameOver){
+        if (!player->GetIsAlive()) {
+            gameOver = true;
         }
-        else if (winee) {
-            winee->JustSpawned();
+        player->Update();
+        if (player->GetShadowAvailable()) {
+            halfScreen.setTexture(unpausedTexture);
         }
-        objects[i]->InCollision(player);
-        objects[i]->SetRandomPosition();
-        objects[i]->UpdatePath(path0,path1,path2, objects);
-    }
-    if (!player->GetIsAlive()) {
-        goToMenu = true;
-    }
-    if ((int)(clock.getElapsedTime().asSeconds()) % 1 == 0 && (int)(clock.getElapsedTime().asSeconds()) != 0 && second != (int)clock.getElapsedTime().asSeconds()) {
+        else {
+            halfScreen.setTexture(unpausedGreyTexture);
+        }
         for (int i = 0; i < objects.size(); i++) {
-            objects[i]->Movement();
+            Wine* winee = dynamic_cast<Wine*>(objects[i]);
+            Coin* coin = dynamic_cast<Coin*>(objects[i]);
+            if (coin) {
+                coin->JustSpawned();
+            }
+            else if (winee) {
+                winee->JustSpawned();
+            }
+            objects[i]->InCollision(player);
+            objects[i]->SetRandomPosition();
+            objects[i]->UpdatePath(path0,path1,path2, objects);
         }
-        second = clock.getElapsedTime().asSeconds();
+        if ((int)(clock.getElapsedTime().asSeconds()) % 1 == 0 && (int)(clock.getElapsedTime().asSeconds()) != 0 && second != (int)clock.getElapsedTime().asSeconds()) {
+            for (int i = 0; i < objects.size(); i++) {
+                objects[i]->Movement();
+            }
+            second = clock.getElapsedTime().asSeconds();
+        }
+    }
+    else if (isPaused) {
+        if (player->GetShadowAvailable()) {
+            halfScreen.setTexture(pausedTexture);
+        }
+        else {
+            halfScreen.setTexture(pausedGreyTexture);
+        }
+        
+    }
+    else if (gameOver) {
+        if (player->GetShadowAvailable()) {
+            halfScreen.setTexture(restartTexture);
+        }
+        else {
+            halfScreen.setTexture(restartGreyTexture);
+        }
     }
 }
 
@@ -234,6 +281,9 @@ void Gameplay::DrawGame(RenderWindow& window) {
         }
         
     }
+    window.draw(halfScreen);
+    menuButton->Draw(window);
+    resumeButton->Draw(window);
     window.display();
 }
 

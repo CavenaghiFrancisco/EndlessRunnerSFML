@@ -20,6 +20,7 @@ private:
 	Sprite spriteShadow;
 	Clock shadowClock;
 	bool firstShadowStep;
+	bool shadowAvailable;
 public:
 	//Linea bugeada
 	Player(int lives, sf::RectangleShape collider, bool isAlive);
@@ -44,6 +45,8 @@ public:
 	int GetPositionY();
 	int GetPoints();
 	void SetPoints(int points);
+	void SetShadowAvailable();
+	bool GetShadowAvailable();
 	
 };
 
