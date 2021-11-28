@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Fire.h"
 #include "Coin.h"
+#include "Wine.h"
 #include <vector>
 
 class Gameplay {
@@ -37,6 +38,7 @@ private:
 	Player* player;
 	Texture fireTexture;
 	Texture coinTexture;
+	Texture wineTexture;
 	RectangleShape fire0;
 	RectangleShape fire1;
 	RectangleShape fire2;
@@ -47,6 +49,7 @@ private:
 	RectangleShape coin0;
 	RectangleShape coin1;
 	RectangleShape coin2;
+	RectangleShape wine;
 	vector<Object*> objects;
 	Clock clock;
 public:

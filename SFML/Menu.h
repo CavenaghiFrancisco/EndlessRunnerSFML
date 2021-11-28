@@ -7,16 +7,17 @@ class Menu {
 private:
 	bool menuInited;
 	bool goToGame;
-	bool goToShop;
 	bool goToCredits;
-	bool goToOptions;
 	bool exitGame;
-	int option;
 	Texture menuTexture;
+	Texture creditTexture;
 	Sprite menuSprite;
+	Sprite creditSprite;
 	Button* playButton;
 	Button* creditsButton;
 	Button* quitButton;
+	Button* backButton;
+	Mouse mouse;
 public:
 	Menu();
 	~Menu();

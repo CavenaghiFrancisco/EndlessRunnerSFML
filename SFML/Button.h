@@ -9,7 +9,7 @@ private:
 public:
 	Button(float positionX, float positionY, float sizeX, float sizeY);
 	~Button();
-	void IsClicked();
+	bool IsClicked(RenderWindow &window);
 	void Draw(RenderWindow &window);
 };
 

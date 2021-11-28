@@ -132,3 +132,7 @@ int Player::GetPositionY() {
 void Player::SetPoints(int points) {
 	this->points += points;
 }
+
+int Player::GetPoints() {
+	return points;
+}

@@ -2,6 +2,7 @@
 
 
 Object::Object(RectangleShape collider, Texture &texture, int id) {
+	srand(time(NULL));
 	this->collider = collider;
 	this->sprite.setTexture(texture);
 	this->id = id;
@@ -29,6 +30,7 @@ void Object::Movement() {
 }
 
 void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleShape path2, vector<Object*> objects) {
+	srand(time(NULL));
 	for (int i = 0; i < objects.size(); i++) {
 		if (objects[i]->positionY == positionY && id != objects[i]->id) {
 			while (positionX == objects[i]->positionX) {
@@ -52,6 +54,7 @@ void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleSha
 }
 
 void Object::SetRandomPosition() {
+	srand(time(NULL));
 	if (positionY >= 7) {
 		positionY = 0;
 		positionX = rand() % 3;

@@ -3,13 +3,19 @@
 Button::Button(float positionX, float positionY, float sizeX, float sizeY) {
 	button.setSize({ sizeX, sizeY });
 	button.setPosition(positionX, positionY);
-	button.setFillColor(Color::Blue);
+	button.setFillColor({255,255,255,100});
 }
 
 Button::~Button() {
 }
 
-void Button::IsClicked() {
+bool Button::IsClicked(RenderWindow& window) {
+	if (button.getGlobalBounds().contains({ (float)Mouse::getPosition(window).x,(float)Mouse::getPosition(window).y })) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 void Button::Draw(RenderWindow &window) {

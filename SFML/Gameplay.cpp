@@ -82,6 +82,9 @@ void Gameplay::InitGame(RenderWindow& window) {
     coin2.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     coin2.setFillColor(Color::Transparent);
     coin2.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 12);
+    wine.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
+    wine.setFillColor(Color::Transparent);
+    wine.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 11);
 
     lava.loadFromFile("Lava.png");
     lava.setRepeated(true);
@@ -89,6 +92,7 @@ void Gameplay::InitGame(RenderWindow& window) {
     path.setRepeated(true);
     fireTexture.loadFromFile("SoulFire.png");
     coinTexture.loadFromFile("Coin.png");
+    wineTexture.loadFromFile("Wine.png");
 
     spritePath0.setTexture(path);
     spritePath0.setTextureRect({ (int)150,(int)0,(int)path0.getSize().x+5,(int)path0.getSize().y });
@@ -122,6 +126,7 @@ void Gameplay::InitGame(RenderWindow& window) {
     objects.push_back(new Coin(coin0, coinTexture, 7));
     objects.push_back(new Coin(coin1, coinTexture, 8));
     objects.push_back(new Coin(coin2, coinTexture, 9));
+    objects.push_back(new Wine(wine, wineTexture, 10));
     objects[0]->SetPositionY(-1);
     objects[1]->SetPositionY(-2);
     objects[2]->SetPositionY(-3);
@@ -132,6 +137,7 @@ void Gameplay::InitGame(RenderWindow& window) {
     objects[7]->SetPositionY(-2);
     objects[8]->SetPositionY(-4);
     objects[9]->SetPositionY(-6);
+    objects[10]->SetPositionY(-5);
 
 }
 
@@ -172,9 +178,13 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
 void Gameplay::UpdateGame(RenderWindow& window) {
     player->Update();
     for (int i = 0; i < objects.size(); i++) {
+        Wine* winee = dynamic_cast<Wine*>(objects[i]);
         Coin* coin = dynamic_cast<Coin*>(objects[i]);
         if (coin) {
             coin->JustSpawned();
+        }
+        else if (winee) {
+            winee->JustSpawned();
         }
         objects[i]->InCollision(player);
         objects[i]->SetRandomPosition();
@@ -210,11 +220,17 @@ void Gameplay::DrawGame(RenderWindow& window) {
     window.draw(player->GetCollider());
     window.draw(player->GetSprite());
     for (int i = 0; i < objects.size(); i++) {
+        Wine* winee = dynamic_cast<Wine*>(objects[i]);
         Coin* coin = dynamic_cast<Coin*>(objects[i]);
         if (coin) {
             if (!coin->GetIsCollected()) {
                 window.draw(coin->GetSprite());
             }   
+        }
+        else if (winee) {
+            if (!winee->GetIsCollected()) {
+                window.draw(winee->GetSprite());
+            }
         }
         else {
             window.draw(objects[i]->GetSprite());
