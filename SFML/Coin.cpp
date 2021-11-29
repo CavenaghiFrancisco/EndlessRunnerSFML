@@ -10,7 +10,7 @@ Coin::~Coin() {
 
 void Coin::InCollision(Player* player) {
 	if(player->GetPositionX() == positionX && player->GetPositionY() == positionY && !isCollected){
-		player->SetPoints(1);
+		player->SetPoints(10);
 		isCollected = true;
 	}
 }

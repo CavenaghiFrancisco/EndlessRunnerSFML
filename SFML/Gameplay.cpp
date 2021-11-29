@@ -98,6 +98,13 @@ void Gameplay::InitGame(RenderWindow& window) {
     halfScreen.setTexture(unpausedTexture);
     halfScreen.setPosition(window.getSize().x / 2, 0);
 
+    font.loadFromFile("greek.ttf");
+
+    text.setFont(font);
+    text.setCharacterSize(40);
+    text.setFillColor({223, 154, 16, 255});
+    text.setPosition(window.getSize().x - 200, 120);
+
     spritePath0.setTexture(path);
     spritePath0.setTextureRect({ (int)150,(int)0,(int)path0.getSize().x+5,(int)path0.getSize().y });
     spritePath0.setPosition(path0.getPosition().x,0);
@@ -199,7 +206,7 @@ void Gameplay::UpdateGame(RenderWindow& window) {
         if (!player->GetIsAlive()) {
             gameOver = true;
         }
-        player->Update();
+        player->Update(isPaused);
         if (player->GetShadowAvailable()) {
             halfScreen.setTexture(unpausedTexture);
         }
@@ -227,6 +234,7 @@ void Gameplay::UpdateGame(RenderWindow& window) {
         }
     }
     else if (isPaused) {
+        player->Update(isPaused);
         if (player->GetShadowAvailable()) {
             halfScreen.setTexture(pausedTexture);
         }
@@ -243,6 +251,7 @@ void Gameplay::UpdateGame(RenderWindow& window) {
             halfScreen.setTexture(restartGreyTexture);
         }
     }
+    text.setString(to_string(player->GetPoints()));
 }
 
 void Gameplay::DrawGame(RenderWindow& window) {
@@ -282,8 +291,7 @@ void Gameplay::DrawGame(RenderWindow& window) {
         
     }
     window.draw(halfScreen);
-    menuButton->Draw(window);
-    resumeButton->Draw(window);
+    window.draw(text);
     window.display();
 }
 

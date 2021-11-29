@@ -55,8 +55,11 @@ private:
 	Sprite halfScreen;
 	vector<Object*> objects;
 	Clock clock;
+	Clock pausedClock;
 	Button* resumeButton;
 	Button* menuButton;
+	Font font;
+	Text text;
 public:
 	Gameplay();
 	~Gameplay();

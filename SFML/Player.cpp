@@ -20,6 +20,8 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	sprite.setTextureRect({ 0,0,64,80 });
 	firstShadowStep = true;
 	shadowAvailable = true;
+	pausedTime = 0;
+	points = 0;
 }
 
 Player::~Player() {
@@ -107,18 +109,26 @@ void Player::ShadowStep() {
 		shadowClock.restart();
 		firstShadowStep = false;
 		shadowAvailable = false;
+		pausedTime = 0;
 	}
 	else if(shadowClock.getElapsedTime().asSeconds() > 8) {
 		SetIsShadow(!isShadow);
 		shadowAvailable = false;
 		shadowClock.restart();
+		pausedTime = 0;
 	}
 }
 
-void Player::Update() {
+void Player::Update(bool isPaused) {
+	if (!isPaused) {
+		pausedClock.restart();
+	}
+	if (pausedClock.getElapsedTime().asSeconds() > 0.3) {
+		pausedTime = pausedClock.getElapsedTime().asSeconds();
+	}
 	sprite.setPosition({ collider.getPosition().x, collider.getPosition().y });
 	spriteShadow.setPosition({ collider.getPosition().x, collider.getPosition().y });
-	if (isShadow && shadowClock.getElapsedTime().asSeconds() > 3) {
+	if (isShadow && shadowClock.getElapsedTime().asSeconds() - pausedTime > 3) {
 		SetIsShadow(!isShadow);
 	}
 	SetShadowAvailable();
@@ -141,7 +151,7 @@ int Player::GetPoints() {
 }
 
 void Player::SetShadowAvailable() {
-	if (shadowClock.getElapsedTime().asSeconds() > 8 || firstShadowStep) {
+	if (shadowClock.getElapsedTime().asSeconds() - pausedTime > 8 || firstShadowStep) {
 		shadowAvailable = true;
 	}
 }

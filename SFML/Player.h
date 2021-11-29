@@ -14,11 +14,13 @@ private:
 	int positionX;
 	int positionY;
 	int shadowTime;	
+	float pausedTime;
 	Texture texture;
 	Texture textureShadow;
 	Sprite sprite;
 	Sprite spriteShadow;
 	Clock shadowClock;
+	Clock pausedClock;
 	bool firstShadowStep;
 	bool shadowAvailable;
 public:
@@ -40,7 +42,7 @@ public:
 	bool GetIsShadow();
 	void SetIsShadow(bool isShadow);
 	void ShadowStep();
-	void Update();
+	void Update(bool isPaused);
 	int GetPositionX();
 	int GetPositionY();
 	int GetPoints();
