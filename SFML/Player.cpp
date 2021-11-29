@@ -22,6 +22,8 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	shadowAvailable = true;
 	pausedTime = 0;
 	points = 0;
+	shadowBuffer.loadFromFile("Audio/ShadowSound.wav");
+	shadowSound.setBuffer(shadowBuffer);
 }
 
 Player::~Player() {
@@ -110,12 +112,14 @@ void Player::ShadowStep() {
 		firstShadowStep = false;
 		shadowAvailable = false;
 		pausedTime = 0;
+		shadowSound.play();
 	}
 	else if(shadowClock.getElapsedTime().asSeconds() > 8) {
 		SetIsShadow(!isShadow);
 		shadowAvailable = false;
 		shadowClock.restart();
 		pausedTime = 0;
+		shadowSound.play();
 	}
 }
 

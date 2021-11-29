@@ -11,6 +11,9 @@ Menu::Menu() {
 	menuSprite.setPosition(0, 0);
 	creditSprite.setTexture(creditTexture);
 	creditSprite.setPosition(0, 0);
+	menuMusic.openFromFile("Audio/MenuMusic.wav");
+	menuMusic.setLoop(true);
+	menuMusic.play();
 }
 
 Menu::~Menu() {

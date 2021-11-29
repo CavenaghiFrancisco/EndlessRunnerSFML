@@ -1,5 +1,6 @@
 #pragma once
 #include "Button.h"
+#include "SFML/Audio.hpp"
 
 using namespace sf;
 
@@ -18,6 +19,7 @@ private:
 	Button* quitButton;
 	Button* backButton;
 	Mouse mouse;
+	Music menuMusic;
 public:
 	Menu();
 	~Menu();

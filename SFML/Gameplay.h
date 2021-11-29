@@ -60,6 +60,11 @@ private:
 	Button* menuButton;
 	Font font;
 	Text text;
+	SoundBuffer initialBuffer;
+	Sound initialSound;
+	SoundBuffer deathBuffer;
+	Sound deathSound;
+	Music gameMusic;
 public:
 	Gameplay();
 	~Gameplay();

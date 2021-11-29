@@ -1,6 +1,7 @@
 #pragma once
 #include "Player.h"
 #include <vector>
+#include "SFML/Audio.hpp"
 
 using namespace std;
 

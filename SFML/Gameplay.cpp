@@ -153,6 +153,14 @@ void Gameplay::InitGame(RenderWindow& window) {
     menuButton = new Button((float)window.getSize().x-310, (float)window.getSize().y - 150, 120, 60);
     resumeButton = new Button((float)window.getSize().x - 320, (float)window.getSize().y - 230, 130, 60);
 
+    initialBuffer.loadFromFile("Audio/SelectionSound.wav");
+    initialSound.setBuffer(initialBuffer);
+    deathBuffer.loadFromFile("Audio/DeathSound.wav");
+    deathSound.setBuffer(deathBuffer);
+    initialSound.play();
+    gameMusic.openFromFile("Audio/GameMusic.wav");
+    gameMusic.setLoop(true);
+    gameMusic.play();
 }
 
 void Gameplay::InputGame(RenderWindow& window, Event& events) {
@@ -223,6 +231,10 @@ void Gameplay::UpdateGame(RenderWindow& window) {
                 winee->JustSpawned();
             }
             objects[i]->InCollision(player);
+            if (!player->GetIsAlive()) {
+                gameMusic.stop();
+                deathSound.play();
+            }
             objects[i]->SetRandomPosition();
             objects[i]->UpdatePath(path0,path1,path2, objects);
         }

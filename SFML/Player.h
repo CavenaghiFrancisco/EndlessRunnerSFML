@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 
 using namespace sf;
 
@@ -23,6 +24,8 @@ private:
 	Clock pausedClock;
 	bool firstShadowStep;
 	bool shadowAvailable;
+	SoundBuffer shadowBuffer;
+	Sound shadowSound;
 public:
 	//Linea bugeada
 	Player(int lives, sf::RectangleShape collider, bool isAlive);
