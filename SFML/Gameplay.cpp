@@ -157,8 +157,10 @@ void Gameplay::InitGame(RenderWindow& window) {
     initialSound.setBuffer(initialBuffer);
     deathBuffer.loadFromFile("Audio/DeathSound.wav");
     deathSound.setBuffer(deathBuffer);
+    deathSound.setVolume(150);
     initialSound.play();
     gameMusic.openFromFile("Audio/GameMusic.wav");
+    gameMusic.setVolume(80);
     gameMusic.setLoop(true);
     gameMusic.play();
 }

@@ -13,6 +13,7 @@ Menu::Menu() {
 	creditSprite.setPosition(0, 0);
 	menuMusic.openFromFile("Audio/MenuMusic.wav");
 	menuMusic.setLoop(true);
+	menuMusic.setVolume(80);
 	menuMusic.play();
 }
 

@@ -24,6 +24,7 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	points = 0;
 	shadowBuffer.loadFromFile("Audio/ShadowSound.wav");
 	shadowSound.setBuffer(shadowBuffer);
+	shadowSound.setVolume(150);
 }
 
 Player::~Player() {
