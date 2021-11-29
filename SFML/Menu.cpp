@@ -23,9 +23,9 @@ Menu::~Menu() {
 
 void Menu::Init(RenderWindow& window) {
 	menuInited = true;
-	playButton = new Button((float)window.getSize().x / 2- (window.getSize().x / 4)/2+10, window.getSize().y * 3 / 6, window.getSize().x / 4, 100);
-	creditsButton = new Button((float)window.getSize().x / 2 - (window.getSize().x / 4) / 2 + 10, (float)window.getSize().y * 4 / 6, (float)window.getSize().x / 4, 100);
-	quitButton = new Button((float)window.getSize().x / 2 - (window.getSize().x / 4) / 2 + 10, (float)window.getSize().y * 5 / 6-10, (float)window.getSize().x / 4, 100);
+	playButton = new Button((float)window.getSize().x / 2- (window.getSize().x / 4)/2+10, (float)window.getSize().y * 3 / 6, (float)window.getSize().x / 4, 100);
+	creditsButton = new Button((float)window.getSize().x / 2 - (window.getSize().x / 4) / 2 + 10, (float)(float)window.getSize().y * 4 / 6, (float)window.getSize().x / 4, 100);
+	quitButton = new Button((float)window.getSize().x / 2 - (window.getSize().x / 4) / 2 + 10, (float)window.getSize().y * 5 / 6-10, (float)(float)window.getSize().x / 4, 100);
 	backButton = new Button((float)115, 95, 74, 60);
 }
 
@@ -57,10 +57,6 @@ void Menu::Input(RenderWindow& window, Event& events) {
 	}
 }
 
-void Menu::Update(RenderWindow& window) {
-	
-}
-
 void Menu::Draw(RenderWindow& window) {
 	window.clear();
 	if (!goToCredits) {
@@ -68,7 +64,6 @@ void Menu::Draw(RenderWindow& window) {
 	}
 	else {
 		window.draw(creditSprite);
-		backButton->Draw(window);
 	}
 	window.display();
 }

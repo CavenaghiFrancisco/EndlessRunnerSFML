@@ -45,42 +45,42 @@ void Gameplay::InitGame(RenderWindow& window) {
     path2.setFillColor(Color::Green);
     shape.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     shape.setFillColor(Color::Transparent);
-    shape.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y + 120 * 6);
+    shape.setPosition((float)(path1.getPosition().x + 4.5), (float)(shape.getPosition().y + 120 * 6));
     player = new Player(3, shape, true);
 
     fire0.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire0.setFillColor(Color::Transparent);
-    fire0.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 7);
+    fire0.setPosition((float)(path2.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 7));
     fire1.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire1.setFillColor(Color::Transparent);
-    fire1.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y - 120 * 8);
+    fire1.setPosition((float)(path1.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 8));
     fire2.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire2.setFillColor(Color::Transparent);
-    fire2.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 9);
+    fire2.setPosition((float)(path0.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 9));
     fire3.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire3.setFillColor(Color::Transparent);
-    fire3.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 10);
+    fire3.setPosition((float)(path2.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 10));
     fire4.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire4.setFillColor(Color::Transparent);
-    fire4.setPosition(path1.getPosition().x + 4.5, shape.getPosition().y - 120 * 11);
+    fire4.setPosition((float)(path1.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 11));
     fire5.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire5.setFillColor(Color::Transparent);
-    fire5.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 12);
+    fire5.setPosition((float)(path0.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 12));
     fire6.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     fire6.setFillColor(Color::Transparent);
-    fire6.setPosition(path0.getPosition().x + 4.5, shape.getPosition().y - 120 * 13);
+    fire6.setPosition((float)(path0.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 13));
     coin0.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     coin0.setFillColor(Color::Transparent);
-    coin0.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 8);
+    coin0.setPosition((float)(path2.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 8));
     coin1.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     coin1.setFillColor(Color::Transparent);
-    coin1.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 10);
+    coin1.setPosition((float)(path2.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 10));
     coin2.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     coin2.setFillColor(Color::Transparent);
-    coin2.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 12);
+    coin2.setPosition((float)(path2.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 12));
     wine.setSize({ (float)window.getSize().x / 16,(float)window.getSize().y / 10 });
     wine.setFillColor(Color::Transparent);
-    wine.setPosition(path2.getPosition().x + 4.5, shape.getPosition().y - 120 * 11);
+    wine.setPosition((float)(path2.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 11));
 
     lava.loadFromFile("Lava.png");
     lava.setRepeated(true);
@@ -96,14 +96,14 @@ void Gameplay::InitGame(RenderWindow& window) {
     restartTexture.loadFromFile("Restart.png");
     restartGreyTexture.loadFromFile("RestartGrey.png");
     halfScreen.setTexture(unpausedTexture);
-    halfScreen.setPosition(window.getSize().x / 2, 0);
+    halfScreen.setPosition((float)(window.getSize().x / 2), 0);
 
     font.loadFromFile("greek.ttf");
 
     text.setFont(font);
     text.setCharacterSize(40);
     text.setFillColor({223, 154, 16, 255});
-    text.setPosition(window.getSize().x - 200, 120);
+    text.setPosition((float)(window.getSize().x - 200), 120);
 
     spritePath0.setTexture(path);
     spritePath0.setTextureRect({ (int)150,(int)0,(int)path0.getSize().x+5,(int)path0.getSize().y });
@@ -211,7 +211,7 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
 
 
 
-void Gameplay::UpdateGame(RenderWindow& window) {
+void Gameplay::UpdateGame() {
     if(!isPaused && !gameOver){
         if (!player->GetIsAlive()) {
             gameOver = true;
@@ -223,7 +223,7 @@ void Gameplay::UpdateGame(RenderWindow& window) {
         else {
             halfScreen.setTexture(unpausedGreyTexture);
         }
-        for (int i = 0; i < objects.size(); i++) {
+        for (size_t i = 0; i < objects.size(); i++) {
             Wine* winee = dynamic_cast<Wine*>(objects[i]);
             Coin* coin = dynamic_cast<Coin*>(objects[i]);
             if (coin) {
@@ -241,10 +241,10 @@ void Gameplay::UpdateGame(RenderWindow& window) {
             objects[i]->UpdatePath(path0,path1,path2, objects);
         }
         if ((int)(clock.getElapsedTime().asSeconds()) % 1 == 0 && (int)(clock.getElapsedTime().asSeconds()) != 0 && second != (int)clock.getElapsedTime().asSeconds()) {
-            for (int i = 0; i < objects.size(); i++) {
+            for (size_t i = 0; i < objects.size(); i++) {
                 objects[i]->Movement();
             }
-            second = clock.getElapsedTime().asSeconds();
+            second = (int)clock.getElapsedTime().asSeconds();
         }
     }
     else if (isPaused) {
@@ -286,7 +286,7 @@ void Gameplay::DrawGame(RenderWindow& window) {
     window.draw(spritePath2);
     window.draw(player->GetCollider());
     window.draw(player->GetSprite());
-    for (int i = 0; i < objects.size(); i++) {
+    for (size_t i = 0; i < objects.size(); i++) {
         Wine* winee = dynamic_cast<Wine*>(objects[i]);
         Coin* coin = dynamic_cast<Coin*>(objects[i]);
         if (coin) {
@@ -316,7 +316,7 @@ void Gameplay::DeInitGame() {
 
 void Gameplay::UpdateDrawFrame(RenderWindow& window, Event& events) {
     Gameplay::InputGame(window, events);
-    Gameplay::UpdateGame(window);
+    Gameplay::UpdateGame();
     Gameplay::DrawGame(window);
 }
 

@@ -34,16 +34,16 @@ int Player::GetLives() {
 	return lives;
 }
 
-void Player::SetLives(int lives) {
-	this->lives = lives;
+void Player::SetLives(int l) {
+	this->lives = l;
 }
 
 bool Player::GetIsAlive() {
 	return isAlive;
 }
 
-void Player::SetIsAlive(bool isAlive) {
-	this->isAlive = isAlive;
+void Player::SetIsAlive(bool alive) {
+	this->isAlive = alive;
 }
 
 RectangleShape Player::GetCollider() {
@@ -53,7 +53,7 @@ RectangleShape Player::GetCollider() {
 void Player::MovePlayerUp() {
 	if (positionY > 0)
 	{
-		collider.setPosition(collider.getPosition().x, collider.getPosition().y - 120);
+		collider.setPosition((float)collider.getPosition().x, (float)(collider.getPosition().y - 120));
 		positionY--;
 	}
 }
@@ -61,29 +61,29 @@ void Player::MovePlayerUp() {
 void Player::MovePlayerDown() {
 	if (positionY < 6)
 	{
-		collider.setPosition(collider.getPosition().x, collider.getPosition().y + 120);
+		collider.setPosition((float)collider.getPosition().x, (float)(collider.getPosition().y + 120));
 		positionY++;
 	}
 }
 
 void Player::MovePlayerLeft(RectangleShape path0, RectangleShape path1, RectangleShape path2) {
 	if (positionX == 1) {
-		collider.setPosition(path0.getPosition().x + 4.5, collider.getPosition().y);
+		collider.setPosition((float)(path0.getPosition().x + 4.5), (float)collider.getPosition().y);
 		positionX = 0;
 	}
 	else if (positionX == 2) {
-		collider.setPosition(path1.getPosition().x + 4.5, collider.getPosition().y);
+		collider.setPosition((float)(path1.getPosition().x + 4.5), (float)collider.getPosition().y);
 		positionX = 1;
 	}
 }
 
 void Player::MovePlayerRight(RectangleShape path0, RectangleShape path1, RectangleShape path2) {
 	if (positionX == 0) {
-		collider.setPosition(path1.getPosition().x + 4.5, collider.getPosition().y);
+		collider.setPosition((float)(path1.getPosition().x + 4.5), (float)collider.getPosition().y);
 		positionX = 1;
 	}
 	else if (positionX == 1) {
-		collider.setPosition(path2.getPosition().x + 4.5, collider.getPosition().y);
+		collider.setPosition((float)(path2.getPosition().x + 4.5), (float)collider.getPosition().y);
 		positionX = 2;
 	}
 }
@@ -102,8 +102,8 @@ bool Player::GetIsShadow() {
 	return isShadow;
 }
 
-void Player::SetIsShadow(bool isShadow) {
-	this->isShadow = isShadow;
+void Player::SetIsShadow(bool shadow) {
+	this->isShadow = shadow;
 }
 
 void Player::ShadowStep() {
@@ -147,8 +147,8 @@ int Player::GetPositionY() {
 	return positionY;
 }
 
-void Player::SetPoints(int points) {
-	this->points += points;
+void Player::SetPoints(int point) {
+	this->points += point;
 }
 
 int Player::GetPoints() {

@@ -25,7 +25,6 @@ public:
 	~Menu();
 	void Init(RenderWindow& window);
 	void Input(RenderWindow& window, Event& events);
-	void Update(RenderWindow& window);
 	void Draw(RenderWindow& window);
 	void DeInit();
 	bool GetInited();

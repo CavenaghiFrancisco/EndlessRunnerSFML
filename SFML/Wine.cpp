@@ -2,7 +2,7 @@
 #include "SFML/Audio.hpp"
 
 Wine::Wine(RectangleShape collider, Texture& texture, int id) : Object(collider,texture,id) {
-    justSpawned == false;
+    justSpawned = false;
     isCollected = false;
     wineBuffer.loadFromFile("Audio/WineSound.wav");
     wineSound.setBuffer(wineBuffer);

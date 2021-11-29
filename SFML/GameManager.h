@@ -16,7 +16,7 @@ public:
 	~GameManager();
 	STATES GetState();
 	void SetState(STATES& states);
-	void UpdateState(STATES states, RenderWindow& window, Event& events);
+	void UpdateState(RenderWindow& window, Event& events);
 	bool ChangeState(STATES states);
 	void StartGameManager(RenderWindow& window, Event &events);
 	bool QuitGame();

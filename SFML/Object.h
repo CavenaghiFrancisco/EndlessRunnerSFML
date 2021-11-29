@@ -21,9 +21,9 @@ public:
 	void UpdatePath(RectangleShape path0, RectangleShape path1, RectangleShape path2, vector<Object*> objects);
 	void SetRandomPosition();
 	int GetPositionX();
-	void SetPositionX(int positionX);
+	void SetPositionX(int posX);
 	int GetPositionY();
-	void SetPositionY(int positionY);
+	void SetPositionY(int posY);
 	virtual void InCollision(Player* player) = 0;
 };
 

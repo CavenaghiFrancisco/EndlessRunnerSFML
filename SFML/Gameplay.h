@@ -71,7 +71,7 @@ public:
 	bool GetInited();
 	void InitGame(RenderWindow& window);         // Initialize game
 	void InputGame(RenderWindow& window, Event& events);
-	void UpdateGame(RenderWindow& window);       // Update game (one frame)
+	void UpdateGame();       // Update game (one frame)
 	void DrawGame(RenderWindow& window);         // Draw game (one frame)
 	void DeInitGame();       // Unload game
 	void UpdateDrawFrame(RenderWindow& window, Event& events);  // Update and Draw (one frame)

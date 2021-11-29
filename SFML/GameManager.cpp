@@ -29,7 +29,7 @@ bool GameManager::ChangeState(STATES states) {
 
 
 void GameManager::StartGameManager(RenderWindow &window, Event& events) {
-	UpdateState(GetState(), window, events);
+	UpdateState(window, events);
 }
 
 bool GameManager::QuitGame() {
@@ -45,7 +45,6 @@ void GameManager::MenuState(RenderWindow& window, Event& events) {
 		menu->Init(window);
 	}
 	menu->Input(window, events);
-	menu->Update(window);
 	menu->Draw(window);
 	if (menu->ExitMenuGoToGame()) {
 		currentState = STATES::GAME;
@@ -84,7 +83,7 @@ void GameManager::GameState(RenderWindow& window, Event& events) {
 	}
 }
 
-void GameManager::UpdateState(STATES states, RenderWindow& window, Event& events) {
+void GameManager::UpdateState(RenderWindow& window, Event& events) {
 	switch (GetState()) {
 	case STATES::MENU:
 		MenuState(window, events);

@@ -2,7 +2,7 @@
 
 
 Object::Object(RectangleShape collider, Texture &texture, int id) {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	this->collider = collider;
 	this->sprite.setTexture(texture);
 	this->id = id;
@@ -30,8 +30,8 @@ void Object::Movement() {
 }
 
 void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleShape path2, vector<Object*> objects) {
-	srand(time(NULL));
-	for (int i = 0; i < objects.size(); i++) {
+	srand((unsigned int)time(NULL));
+	for (size_t i = 0; i < objects.size(); i++) {
 		if (objects[i]->positionY == positionY && id != objects[i]->id) {
 			while (positionX == objects[i]->positionX) {
 				this->positionX = rand() % 3;
@@ -40,13 +40,13 @@ void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleSha
 	}
 	switch (positionX) {
 	case 0:
-		collider.setPosition(path0.getPosition().x + 4.5, collider.getPosition().y);
+		collider.setPosition((float)(path0.getPosition().x + 4.5), collider.getPosition().y);
 		break;
 	case 1:
-		collider.setPosition(path1.getPosition().x + 4.5, collider.getPosition().y);
+		collider.setPosition((float)(path1.getPosition().x + 4.5), collider.getPosition().y);
 		break;
 	case 2:
-		collider.setPosition(path2.getPosition().x + 4.5, collider.getPosition().y);
+		collider.setPosition((float)(path2.getPosition().x + 4.5), collider.getPosition().y);
 		break;
 	}
 	collider.setPosition(collider.getPosition().x, collider.getPosition().y);
@@ -54,7 +54,7 @@ void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleSha
 }
 
 void Object::SetRandomPosition() {
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	if (positionY >= 7) {
 		positionY = 0;
 		positionX = rand() % 3;
@@ -67,14 +67,14 @@ int Object::GetPositionX() {
 	return positionX;
 }
 
-void Object::SetPositionX(int positionX) {
-	this->positionX = positionX;
+void Object::SetPositionX(int posX) {
+	this->positionX = posX;
 }
 
 int Object::GetPositionY() {
 	return positionY;
 }
 
-void Object::SetPositionY(int positionY) {
-	this->positionY = positionY;
+void Object::SetPositionY(int posY) {
+	this->positionY = posY;
 }

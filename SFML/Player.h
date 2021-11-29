@@ -32,9 +32,9 @@ public:
 	//Linea bugeada
 	~Player();
 	int GetLives();
-	void SetLives(int lives);
+	void SetLives(int l);
 	bool GetIsAlive();
-	void SetIsAlive(bool isAlive);
+	void SetIsAlive(bool alive);
 	RectangleShape GetCollider();
 	//Linea bugeada
 	void MovePlayerUp();
@@ -43,13 +43,13 @@ public:
 	void MovePlayerRight(RectangleShape path0, RectangleShape path1, RectangleShape path2);
 	Sprite GetSprite();
 	bool GetIsShadow();
-	void SetIsShadow(bool isShadow);
+	void SetIsShadow(bool shadow);
 	void ShadowStep();
 	void Update(bool isPaused);
 	int GetPositionX();
 	int GetPositionY();
 	int GetPoints();
-	void SetPoints(int points);
+	void SetPoints(int point);
 	void SetShadowAvailable();
 	bool GetShadowAvailable();
 	
