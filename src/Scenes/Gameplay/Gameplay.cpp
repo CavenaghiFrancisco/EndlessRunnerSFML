@@ -226,12 +226,6 @@ void Gameplay::UpdateGame() {
         for (size_t i = 0; i < objects.size(); i++) {
             Wine* winee = dynamic_cast<Wine*>(objects[i]);
             Coin* coin = dynamic_cast<Coin*>(objects[i]);
-            if (coin) {
-                coin->JustSpawned();
-            }
-            else if (winee) {
-                winee->JustSpawned();
-            }
             objects[i]->InCollision(player);
             if (!player->GetIsAlive()) {
                 gameMusic.stop();
@@ -239,6 +233,12 @@ void Gameplay::UpdateGame() {
             }
             objects[i]->SetRandomPosition();
             objects[i]->UpdatePath(path0,path1,path2, objects);
+            if (coin) {
+                coin->JustSpawned();
+            }
+            else if (winee) {
+                winee->JustSpawned();
+            }
         }
         if ((int)(clock.getElapsedTime().asSeconds()) % 1 == 0 && (int)(clock.getElapsedTime().asSeconds()) != 0 && second != (int)clock.getElapsedTime().asSeconds()) {
             for (size_t i = 0; i < objects.size(); i++) {

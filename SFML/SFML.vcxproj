@@ -149,7 +149,8 @@
     </Link>
     <PreBuildEvent>
       <Command>MKDIR "$(TargetDir)Assets"
-XCOPY "$(ProjectDir)Assets" "$(TargetDir)Assets" /e /h /y /s</Command>
+XCOPY "$(ProjectDir)Assets" "$(TargetDir)Assets" /e /h /y /s
+XCOPY "$(ProjectDir)openal32.dll" "$(TargetDir)" /e /h /y /s</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
