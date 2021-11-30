@@ -172,7 +172,7 @@ void Gameplay::InputGame(RenderWindow& window, Event& events) {
             window.close();
             break;
         case Event::KeyPressed:
-            if (!isPaused) {
+            if (!isPaused && !gameOver) {
                 if (Keyboard::isKeyPressed(Keyboard::W)) {
                     player->MovePlayerUp();
                 }

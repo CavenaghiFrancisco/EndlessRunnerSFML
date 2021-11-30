@@ -14,7 +14,7 @@ Wine::~Wine() {
 
 void Wine::InCollision(Player* player) {
     if (player->GetPositionX() == positionX && player->GetPositionY() == positionY && !isCollected) {
-        player->SetPoints(player->GetPoints() * 2 - player->GetPoints());
+        player->SetPoints(player->GetPoints());
         isCollected = true;
         wineSound.setVolume(100);
         wineSound.play();
@@ -27,11 +27,11 @@ bool Wine::GetIsCollected() {
 }
 
 void Wine::JustSpawned() {
-    if (positionY == 0 && !justSpawned) {
+    if (positionY == 7 && !justSpawned) {
         isCollected = false;
         justSpawned = true;
     }
-    else if (positionX == 1) {
+    else if (positionX == 0) {
         justSpawned = false;
     }
 }

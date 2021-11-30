@@ -8,7 +8,7 @@ using namespace sf;
 class Player {
 private:
 	int lives;
-	int points;
+	unsigned int points;
 	int positionX;
 	int positionY;
 	int shadowTime;	
@@ -45,8 +45,8 @@ public:
 	void Update(bool isPaused);
 	int GetPositionX();
 	int GetPositionY();
-	int GetPoints();
-	void SetPoints(int point);
+	unsigned int GetPoints();
+	void SetPoints(unsigned int point);
 	void SetShadowAvailable();
 	bool GetShadowAvailable();
 };

@@ -147,11 +147,11 @@ int Player::GetPositionY() {
 	return positionY;
 }
 
-void Player::SetPoints(int point) {
+void Player::SetPoints(unsigned int point) {
 	this->points += point;
 }
 
-int Player::GetPoints() {
+unsigned int Player::GetPoints() {
 	return points;
 }
 

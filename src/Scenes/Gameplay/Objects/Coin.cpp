@@ -20,11 +20,11 @@ bool Coin::GetIsCollected() {
 }
 
 void Coin::JustSpawned() {
-	if (positionY == 0 && !justSpawned) {
+	if (positionY == 7 && !justSpawned) {
 		isCollected = false;
 		justSpawned = true;
 	}
-	else if (positionX == 1) {
+	else if (positionX == 0) {
 		justSpawned = false;
 	}
 }
