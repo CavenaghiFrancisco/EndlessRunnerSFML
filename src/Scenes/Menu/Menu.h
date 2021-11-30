@@ -1,6 +1,8 @@
 #pragma once
-#include "Button.h"
 #include "SFML/Audio.hpp"
+#include "SFML/Graphics.hpp"
+
+#include "Objects/Button.h"
 
 using namespace sf;
 

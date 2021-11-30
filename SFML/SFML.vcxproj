@@ -18,6 +18,31 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\App\App.h" />
+    <ClInclude Include="..\src\Scenes\GameManager.h" />
+    <ClInclude Include="..\src\Scenes\Gameplay\Gameplay.h" />
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Coin.h" />
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Fire.h" />
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Object.h" />
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Wine.h" />
+    <ClInclude Include="..\src\Scenes\Gameplay\Player.h" />
+    <ClInclude Include="..\src\Scenes\Menu\Menu.h" />
+    <ClInclude Include="..\src\Scenes\Menu\Objects\Button.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\App\App.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\Scenes\GameManager.cpp" />
+    <ClCompile Include="..\src\Scenes\Gameplay\Gameplay.cpp" />
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Coin.cpp" />
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Fire.cpp" />
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Object.cpp" />
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Wine.cpp" />
+    <ClCompile Include="..\src\Scenes\Gameplay\Player.cpp" />
+    <ClCompile Include="..\src\Scenes\Menu\Menu.cpp" />
+    <ClCompile Include="..\src\Scenes\Menu\Objects\Button.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -110,7 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>SFML_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)lib\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)lib\SFML-2.5.1\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -122,6 +147,10 @@
       <AdditionalDependencies>sfml-window-s.lib;sfml-system-s.lib;sfml-graphics-s.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;sfml-audio-s.lib	;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;sfml-network-s.lib	;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
+    <PreBuildEvent>
+      <Command>MKDIR "$(TargetDir)Assets"
+XCOPY "$(ProjectDir)Assets" "$(TargetDir)Assets" /e /h /y /s</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -151,31 +180,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="App.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="Coin.cpp" />
-    <ClCompile Include="Fire.cpp" />
-    <ClCompile Include="Gameplay.cpp" />
-    <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Wine.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="App.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="Coin.h" />
-    <ClInclude Include="Fire.h" />
-    <ClInclude Include="Gameplay.h" />
-    <ClInclude Include="GameManager.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Wine.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

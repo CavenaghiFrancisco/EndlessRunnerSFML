@@ -1,7 +1,11 @@
 #pragma once
-#include "Player.h"
+
 #include <vector>
+
 #include "SFML/Audio.hpp"
+#include "SFML/Graphics.hpp"
+
+#include "Scenes/Gameplay/Player.h"
 
 using namespace std;
 

@@ -82,23 +82,23 @@ void Gameplay::InitGame(RenderWindow& window) {
     wine.setFillColor(Color::Transparent);
     wine.setPosition((float)(path2.getPosition().x + 4.5), (float)(shape.getPosition().y - 120 * 11));
 
-    lava.loadFromFile("Lava.png");
+    lava.loadFromFile("Assets/Image/Lava.png");
     lava.setRepeated(true);
-    path.loadFromFile("Stone.png");
+    path.loadFromFile("Assets/Image/Stone.png");
     path.setRepeated(true);
-    fireTexture.loadFromFile("SoulFire.png");
-    coinTexture.loadFromFile("Coin.png");
-    wineTexture.loadFromFile("Wine.png");
-    unpausedTexture.loadFromFile("Unpaused.png");
-    unpausedGreyTexture.loadFromFile("UnpausedGrey.png");
-    pausedTexture.loadFromFile("Paused.png");
-    pausedGreyTexture.loadFromFile("PausedGrey.png");
-    restartTexture.loadFromFile("Restart.png");
-    restartGreyTexture.loadFromFile("RestartGrey.png");
+    fireTexture.loadFromFile("Assets/Image/SoulFire.png");
+    coinTexture.loadFromFile("Assets/Image/Coin.png");
+    wineTexture.loadFromFile("Assets/Image/Wine.png");
+    unpausedTexture.loadFromFile("Assets/Image/Unpaused.png");
+    unpausedGreyTexture.loadFromFile("Assets/Image/UnpausedGrey.png");
+    pausedTexture.loadFromFile("Assets/Image/Paused.png");
+    pausedGreyTexture.loadFromFile("Assets/Image/PausedGrey.png");
+    restartTexture.loadFromFile("Assets/Image/Restart.png");
+    restartGreyTexture.loadFromFile("Assets/Image/RestartGrey.png");
     halfScreen.setTexture(unpausedTexture);
     halfScreen.setPosition((float)(window.getSize().x / 2), 0);
 
-    font.loadFromFile("greek.ttf");
+    font.loadFromFile("Assets/Font/greek.ttf");
 
     text.setFont(font);
     text.setCharacterSize(40);
@@ -153,13 +153,13 @@ void Gameplay::InitGame(RenderWindow& window) {
     menuButton = new Button((float)window.getSize().x-310, (float)window.getSize().y - 150, 120, 60);
     resumeButton = new Button((float)window.getSize().x - 320, (float)window.getSize().y - 230, 130, 60);
 
-    initialBuffer.loadFromFile("Audio/SelectionSound.wav");
+    initialBuffer.loadFromFile("Assets/Audio/SelectionSound.wav");
     initialSound.setBuffer(initialBuffer);
-    deathBuffer.loadFromFile("Audio/DeathSound.wav");
+    deathBuffer.loadFromFile("Assets/Audio/DeathSound.wav");
     deathSound.setBuffer(deathBuffer);
     deathSound.setVolume(150);
     initialSound.play();
-    gameMusic.openFromFile("Audio/GameMusic.wav");
+    gameMusic.openFromFile("Assets/Audio/GameMusic.wav");
     gameMusic.setVolume(80);
     gameMusic.setLoop(true);
     gameMusic.play();

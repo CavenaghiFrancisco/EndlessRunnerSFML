@@ -5,20 +5,23 @@ Menu::Menu() {
 	goToGame = false;
 	goToCredits = false;
 	exitGame = false;
-	creditTexture.loadFromFile("Credits.png");
-	menuTexture.loadFromFile("MainMenu.png");
+	creditTexture.loadFromFile("Assets/Image/Credits.png");
+	menuTexture.loadFromFile("Assets/Image/MainMenu.png");
 	menuSprite.setTexture(menuTexture);
 	menuSprite.setPosition(0, 0);
 	creditSprite.setTexture(creditTexture);
 	creditSprite.setPosition(0, 0);
-	menuMusic.openFromFile("Audio/MenuMusic.wav");
+	menuMusic.openFromFile("Assets/Audio/MenuMusic.wav");
 	menuMusic.setLoop(true);
 	menuMusic.setVolume(80);
 	menuMusic.play();
 }
 
 Menu::~Menu() {
-
+	delete playButton;
+	delete creditsButton;
+	delete quitButton;
+	delete backButton;
 }
 
 void Menu::Init(RenderWindow& window) {

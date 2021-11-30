@@ -1,84 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="App">
+      <UniqueIdentifier>{18405fb2-0722-4d19-87b3-aa48183fbfbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{41ca2059-54de-4290-8e33-33e6138e0852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Gameplay">
+      <UniqueIdentifier>{a235909f-4d82-4f77-b40c-620ff2cbde98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Menu">
+      <UniqueIdentifier>{729394ad-2626-41db-9519-f897e685e7f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Gameplay\Objects">
+      <UniqueIdentifier>{75227840-2c6d-486f-b1fd-c61cc437f518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Menu\Objects">
+      <UniqueIdentifier>{0d56008a-5a73-4c35-92f4-a289687f16f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Fire.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Gameplay.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Coin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Wine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="..\src\App\App.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\GameManager.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Gameplay\Gameplay.h">
+      <Filter>Scenes\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Gameplay\Player.h">
+      <Filter>Scenes\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Menu\Menu.h">
+      <Filter>Scenes\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Coin.h">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Fire.h">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Object.h">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Gameplay\Objects\Wine.h">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scenes\Menu\Objects\Button.h">
+      <Filter>Scenes\Menu\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Fire.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gameplay.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="App.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Coin.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Wine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="..\src\App\App.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\GameManager.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Gameplay\Gameplay.cpp">
+      <Filter>Scenes\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Gameplay\Player.cpp">
+      <Filter>Scenes\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Menu\Menu.cpp">
+      <Filter>Scenes\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Coin.cpp">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Fire.cpp">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Object.cpp">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Gameplay\Objects\Wine.cpp">
+      <Filter>Scenes\Gameplay\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Scenes\Menu\Objects\Button.cpp">
+      <Filter>Scenes\Menu\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

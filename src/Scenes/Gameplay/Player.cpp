@@ -10,9 +10,9 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	this->positionX = 1;
 	this->positionY = 6;
 	this->shadowTime = 0;
-	this->texture.loadFromFile("OrpheoIdle.png");
+	this->texture.loadFromFile("Assets/Image/OrpheoIdle.png");
 	this->sprite.setTexture(texture);
-	this->textureShadow.loadFromFile("OrpheoShadow.png");
+	this->textureShadow.loadFromFile("Assets/Image/OrpheoShadow.png");
 	this->spriteShadow.setTexture(textureShadow);
 	spriteShadow.setPosition({ this->collider.getPosition().x,this->collider.getPosition().y });
 	spriteShadow.setTextureRect({ 0,0,64,80 });
@@ -22,7 +22,7 @@ Player::Player(int lives, sf::RectangleShape collider, bool isAlive) {
 	shadowAvailable = true;
 	pausedTime = 0;
 	points = 0;
-	shadowBuffer.loadFromFile("Audio/ShadowSound.wav");
+	shadowBuffer.loadFromFile("Assets/Audio/ShadowSound.wav");
 	shadowSound.setBuffer(shadowBuffer);
 	shadowSound.setVolume(150);
 }

@@ -1,6 +1,10 @@
 #include "App.h"
-#include "GameManager.h"
-//Incluir todo lo que se usa
+
+#include "SFML/Graphics.hpp"
+
+#include "Scenes/GameManager.h"
+
+using namespace sf;
 
 void Run() {
     RenderWindow window(VideoMode(1000, 800), "Escape from the Underworld");

@@ -1,10 +1,15 @@
 #pragma once
-#include "Player.h"
-#include "Fire.h"
-#include "Coin.h"
-#include "Wine.h"
-#include "Button.h"
+
 #include <vector>
+
+#include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
+
+#include "Player.h"
+#include "Objects/Fire.h"
+#include "Objects/Coin.h"
+#include "Objects/Wine.h"
+#include "Scenes/Menu/Objects/Button.h"
 
 class Gameplay {
 private:
