@@ -55,7 +55,7 @@ void Object::UpdatePath(RectangleShape path0, RectangleShape path1, RectangleSha
 
 void Object::SetRandomPosition() {
 	srand((unsigned int)time(NULL));
-	if (positionY >= 7) {
+	if (positionY >= 8) {
 		positionY = 0;
 		positionX = rand() % 3;
 		collider.setPosition(collider.getPosition().x, 0);
